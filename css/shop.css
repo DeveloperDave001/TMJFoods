@@ -67,7 +67,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .nav-actions{display:flex;align-items:center;gap:10px}
 .nav-cart-btn{position:relative;width:40px;height:40px;border-radius:50%;background:var(--forest);display:flex;align-items:center;justify-content:center;color:#fff;font-size:17px;transition:transform var(--transition),box-shadow var(--transition);cursor:pointer}
 .nav-cart-btn:hover{transform:scale(1.08);box-shadow:var(--shadow-sm)}
-.cart-badge{position:absolute;top:-3px;right:-3px;width:18px;height:18px;background:var(--amber);border-radius:50%;font-size:10px;font-weight:700;color:var(--bark);display:flex;align-items:center;justify-content:center;transition:transform var(--transition)}
+.cart-badge{position:absolute;top:-3px;right:-3px;width:18px;height:18px;background:var(--amber);border-radius:50%;font-size:10px;font-weight:700;color:var(--bark);display:none;align-items:center;justify-content:center;transition:transform var(--transition)}
 .cart-badge.pop{animation:pop .3s ease}
 .hamburger{display:none;flex-direction:column;gap:5px;padding:8px;cursor:pointer}
 .hamburger span{display:block;width:22px;height:2px;background:var(--gray-900);border-radius:2px;transition:.3s}

@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/shop.css"/>
 <style>
 /* =============================================
    RESET & ROOT TOKENS
@@ -1193,10 +1194,10 @@ body::before{
       </div>
       <div class="nav-actions">
         <a href="#shop" class="nav-shop-btn">Shop Now</a>
-        <a href="#cart" class="nav-cart" aria-label="Cart (2 items)">
+        <button class="nav-cart-btn" onclick="openCart()" aria-label="Open cart">
           🛒
-          <span class="nav-cart-badge">2</span>
-        </a>
+          <span class="cart-badge" id="cartBadge" style="display:none"></span>
+        </button>
         <button class="hamburger" aria-label="Open menu" onclick="toggleMenu()">
           <span></span><span></span><span></span>
         </button>
@@ -1235,7 +1236,7 @@ body::before{
       We transform <strong>indigenous African grains, nuts, seeds and tubers</strong> into functional, nutrient-dense foods your body actually needs — free from gluten, additives, and compromise.
     </p>
     <div class="hero-cta">
-      <a href="#shop" class="btn-primary" aria-label="Shop all products">
+      <a href="tmj-foods-shop.html" class="btn-primary" aria-label="Shop all products">
         Explore Products
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
@@ -1389,19 +1390,7 @@ body::before{
       <article class="product-card reveal d1" data-category="gut diabetes">
         <div class="product-img" style="background:#E8F5EE">
           <span class="product-badge badge-bestseller">Bestseller</span>
-          <svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Sorghum-Plantain Flour pack">
-            <rect x="30" y="15" width="120" height="155" rx="16" fill="#1A5C34"/>
-            <rect x="30" y="15" width="120" height="28" rx="8" fill="#0F3D22"/>
-            <rect x="40" y="42" width="100" height="110" rx="10" fill="rgba(255,255,255,0.08)"/>
-            <circle cx="90" cy="72" r="18" fill="rgba(255,255,255,0.12)"/>
-            <text x="90" y="78" text-anchor="middle" font-size="16">🌾</text>
-            <text x="90" y="100" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="700" fill="white">SORGHUM-PLANTAIN</text>
-            <text x="90" y="115" text-anchor="middle" font-family="Georgia,serif" font-size="15" font-weight="700" fill="white">FLOUR</text>
-            <text x="90" y="132" text-anchor="middle" font-size="7" fill="rgba(255,255,255,0.5)">FUNCTIONAL · GLUTEN-FREE</text>
-            <rect x="55" y="140" width="70" height="14" rx="7" fill="rgba(200,137,26,0.3)"/>
-            <text x="90" y="151" text-anchor="middle" font-size="7" font-weight="700" fill="#E8A825">LOW GLYCEMIC INDEX</text>
-            <text x="150" y="165" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.5)">1kg</text>
-          </svg>
+          <img src="p1.png" alt="Sorghum-Plantain Flour" class="product-real-img">
         </div>
         <div class="product-body">
           <div class="product-tags">
@@ -1425,19 +1414,7 @@ body::before{
       <!-- Product 2: Unripe Plantain Flour -->
       <article class="product-card reveal d2" data-category="gut diabetes">
         <div class="product-img" style="background:#FFFBEA">
-          <svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Unripe Plantain Flour pack">
-            <rect x="30" y="15" width="120" height="155" rx="16" fill="#FFFFFF" stroke="#E8D8A0" stroke-width="1.5"/>
-            <rect x="30" y="15" width="120" height="28" rx="8" fill="#2D7A4F"/>
-            <rect x="40" y="42" width="100" height="110" rx="10" fill="#FAF6EE"/>
-            <circle cx="90" cy="72" r="18" fill="rgba(45,122,79,0.12)"/>
-            <text x="90" y="78" text-anchor="middle" font-size="16">🍌</text>
-            <text x="90" y="100" text-anchor="middle" font-family="Georgia,serif" font-size="9" font-weight="700" fill="#2D7A4F" letter-spacing="0.5">UNRIPE PLANTAIN</text>
-            <text x="90" y="115" text-anchor="middle" font-family="Georgia,serif" font-size="15" font-weight="700" fill="#1A5C34">FLOUR</text>
-            <text x="90" y="133" text-anchor="middle" font-size="7" fill="#9A9587">PREBIOTIC · CLEAN · NATURAL</text>
-            <rect x="55" y="141" width="70" height="14" rx="7" fill="rgba(26,92,52,0.1)"/>
-            <text x="90" y="152" text-anchor="middle" font-size="7" font-weight="700" fill="#1A5C34">GUT SUPERFOOD</text>
-            <text x="150" y="165" text-anchor="middle" font-size="8" fill="#9A9587">1kg</text>
-          </svg>
+          <img src="p2.png" alt="Unripe Plantain Flour" class="product-real-img">
         </div>
         <div class="product-body">
           <div class="product-tags">
@@ -1462,19 +1439,7 @@ body::before{
       <article class="product-card reveal d3" data-category="women gut">
         <div class="product-img" style="background:#FDF0F8">
           <span class="product-badge badge-women">For Women</span>
-          <svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="SORPLA FemmeGrain pack">
-            <rect x="30" y="15" width="120" height="155" rx="16" fill="#B05090"/>
-            <rect x="30" y="15" width="120" height="28" rx="8" fill="#7B2D6E"/>
-            <rect x="40" y="42" width="100" height="110" rx="10" fill="rgba(255,255,255,0.08)"/>
-            <circle cx="90" cy="72" r="18" fill="rgba(255,255,255,0.12)"/>
-            <text x="90" y="78" text-anchor="middle" font-size="16">🌸</text>
-            <text x="90" y="99" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="700" fill="white">SORPLA</text>
-            <text x="90" y="115" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-weight="700" fill="white">FemmeGrain</text>
-            <text x="90" y="132" text-anchor="middle" font-size="7" fill="rgba(255,255,255,0.55)">HORMONAL · WELLNESS · BLEND</text>
-            <rect x="55" y="141" width="70" height="14" rx="7" fill="rgba(255,200,230,0.25)"/>
-            <text x="90" y="152" text-anchor="middle" font-size="7" font-weight="700" fill="#FFD0EC">HORMONAL BALANCE</text>
-            <text x="150" y="165" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.5)">1kg</text>
-          </svg>
+          <img src="p3.png" alt="SORPLA FemmeGrain" class="product-real-img">
         </div>
         <div class="product-body">
           <div class="product-tags">
@@ -1498,19 +1463,7 @@ body::before{
       <article class="product-card reveal d1" data-category="men gut">
         <div class="product-img" style="background:#EAF0FB">
           <span class="product-badge badge-men">For Men</span>
-          <svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="SORPLA AlphaGrain pack">
-            <rect x="30" y="15" width="120" height="155" rx="16" fill="#1A3A7B"/>
-            <rect x="30" y="15" width="120" height="28" rx="8" fill="#0F2456"/>
-            <rect x="40" y="42" width="100" height="110" rx="10" fill="rgba(255,255,255,0.06)"/>
-            <circle cx="90" cy="72" r="18" fill="rgba(255,255,255,0.1)"/>
-            <text x="90" y="78" text-anchor="middle" font-size="16">💪</text>
-            <text x="90" y="99" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="700" fill="white">SORPLA</text>
-            <text x="90" y="115" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-weight="700" fill="white">AlphaGrain</text>
-            <text x="90" y="132" text-anchor="middle" font-size="7" fill="rgba(255,255,255,0.55)">STRENGTH · FOCUS · ENDURANCE</text>
-            <rect x="55" y="141" width="70" height="14" rx="7" fill="rgba(100,150,255,0.2)"/>
-            <text x="90" y="152" text-anchor="middle" font-size="7" font-weight="700" fill="#AAC4FF">HIGH PROTEIN BLEND</text>
-            <text x="150" y="165" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.5)">1kg</text>
-          </svg>
+          <img src="p4.png" alt="SORPLA AlphaGrain" class="product-real-img">
         </div>
         <div class="product-body">
           <div class="product-tags">
@@ -1533,19 +1486,7 @@ body::before{
       <!-- Product 5: OrangeKind OFSP -->
       <article class="product-card reveal d2" data-category="gut diabetes">
         <div class="product-img" style="background:#FFF3E8">
-          <svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="OrangeKind Sweet Potato Flour pack">
-            <rect x="30" y="15" width="120" height="155" rx="16" fill="#D45C10"/>
-            <rect x="30" y="15" width="120" height="28" rx="8" fill="#9A3A08"/>
-            <rect x="40" y="42" width="100" height="110" rx="10" fill="rgba(255,255,255,0.07)"/>
-            <circle cx="90" cy="72" r="18" fill="rgba(255,255,255,0.1)"/>
-            <text x="90" y="78" text-anchor="middle" font-size="16">🍠</text>
-            <text x="90" y="99" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="700" fill="white">OrangeKind™</text>
-            <text x="90" y="115" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="700" fill="rgba(255,255,255,0.85)">SWEET POTATO FLOUR</text>
-            <text x="90" y="132" text-anchor="middle" font-size="7" fill="rgba(255,255,255,0.55)">BETA-CAROTENE · VISION · IMMUNITY</text>
-            <rect x="55" y="141" width="70" height="14" rx="7" fill="rgba(255,200,100,0.2)"/>
-            <text x="90" y="152" text-anchor="middle" font-size="7" font-weight="700" fill="#FFDC82">RICH IN VITAMIN A</text>
-            <text x="150" y="165" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.5)">850g</text>
-          </svg>
+          <img src="p5.png" alt="OrangeKind OFSP" class="product-real-img">
         </div>
         <div class="product-body">
           <div class="product-tags">
@@ -1569,25 +1510,7 @@ body::before{
       <article class="product-card reveal d3" data-category="gut">
         <div class="product-img" style="background:#F0F8F4">
           <span class="product-badge badge-new" style="background:var(--gold);color:var(--bark)">Fan Fav</span>
-          <svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Tapioca Flakes pack">
-            <rect x="30" y="15" width="120" height="155" rx="16" fill="#F5F0E8" stroke="#D8D4C8" stroke-width="1"/>
-            <rect x="30" y="15" width="120" height="28" rx="8" fill="#4A9E6B"/>
-            <rect x="40" y="42" width="100" height="110" rx="10" fill="rgba(74,158,107,0.06)"/>
-            <!-- tapioca grain texture -->
-            <circle cx="68" cy="72" r="5" fill="rgba(255,255,255,0.8)" stroke="#D8D4C8" stroke-width="0.5"/>
-            <circle cx="82" cy="65" r="4" fill="rgba(255,255,255,0.8)" stroke="#D8D4C8" stroke-width="0.5"/>
-            <circle cx="95" cy="72" r="5.5" fill="rgba(255,255,255,0.9)" stroke="#D8D4C8" stroke-width="0.5"/>
-            <circle cx="108" cy="66" r="4" fill="rgba(255,255,255,0.8)" stroke="#D8D4C8" stroke-width="0.5"/>
-            <circle cx="75" cy="80" r="4.5" fill="rgba(255,255,255,0.8)" stroke="#D8D4C8" stroke-width="0.5"/>
-            <circle cx="90" cy="80" r="3.5" fill="rgba(255,255,255,0.7)" stroke="#D8D4C8" stroke-width="0.5"/>
-            <circle cx="104" cy="78" r="5" fill="rgba(255,255,255,0.9)" stroke="#D8D4C8" stroke-width="0.5"/>
-            <text x="90" y="103" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="700" fill="#4A9E6B">TAPIOCA</text>
-            <text x="90" y="117" text-anchor="middle" font-family="Georgia,serif" font-size="15" font-weight="700" fill="#1A5C34">FLAKES</text>
-            <text x="90" y="133" text-anchor="middle" font-size="7" fill="#9A9587">GLUTEN-FREE CASSAVA STARCH</text>
-            <rect x="55" y="141" width="70" height="14" rx="7" fill="rgba(26,92,52,0.08)"/>
-            <text x="90" y="152" text-anchor="middle" font-size="7" font-weight="700" fill="#1A5C34">GENTLE DIGESTION</text>
-            <text x="150" y="165" text-anchor="middle" font-size="8" fill="#9A9587">500g</text>
-          </svg>
+          <img src="p6.png" alt="Tapioca Flakes" class="product-real-img">
         </div>
         <div class="product-body">
           <div class="product-tags">
@@ -1936,11 +1859,12 @@ function filterProducts(btn, cat) {
 }
 
 /* Add to cart */
-let cartCount = 2;
+let localCartCount = 0;
 function addToCart(name) {
-  cartCount++;
-  document.querySelector('.nav-cart-badge').textContent = cartCount;
-  showToast('✓ ' + name + ' added to cart');
+  localCartCount++;
+  document.getElementById('cartBadge').textContent = localCartCount;
+  document.getElementById('cartBadge').style.display = 'flex';
+  showToast('✓ ' + name + ' added to cart', 'success');
 }
 
 /* Toast */
@@ -1963,5 +1887,36 @@ function submitNewsletter(e) {
 const track = document.getElementById('tickerTrack');
 // already duplicated in HTML
 </script>
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
+  <div class="cart-head">
+    <h2>Your Cart 🛒</h2>
+    <button class="cart-close" onclick="closeCart()" aria-label="Close cart">✕</button>
+  </div>
+  <div class="free-ship-bar">
+    <p id="shipMsg">Add <strong id="shipLeft">₦10,000</strong> more for free delivery!</p>
+    <div class="ship-progress"><div class="ship-fill" id="shipFill" style="width:0%"></div></div>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty">
+      <div class="icon">🛒</div>
+      <h3>Your cart is empty</h3>
+      <p>Add some products to get started on your wellness journey.</p>
+    </div>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-promo">
+      <input class="promo-input" type="text" placeholder="Promo code" id="promoInput"/>
+      <button class="promo-btn" onclick="applyPromo()">Apply</button>
+    </div>
+    <div class="cart-totals" id="cartTotals"></div>
+    <button class="checkout-btn" onclick="checkout()">
+      Secure Checkout
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <p class="secure-note">🔒 Secured by Paystack · Free returns</p>
+  </div>
+</aside>
+<script src="js/shop.js"></script>
 </body>
 </html>
