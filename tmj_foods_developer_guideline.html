@@ -1,0 +1,729 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --green:#1C6B38;--green-light:#E8F5EE;--green-mid:#2E8B57;--green-dark:#0F4023;
+    --amber:#B8730A;--amber-light:#FEF3E0;
+    --red:#C0392B;--red-light:#FDECEA;
+    --blue:#1A5276;--blue-light:#EAF2FB;
+    --gray-50:#F9F9F7;--gray-100:#F0EFE8;--gray-200:#DDDCD3;--gray-400:#8A8980;--gray-600:#5C5B54;--gray-900:#1E1E1C;
+    --font-display:'DM Serif Display',serif;
+    --font-body:'DM Sans',sans-serif;
+    --font-mono:'JetBrains Mono',monospace;
+    --radius:10px;--radius-sm:6px;
+  }
+  body{font-family:var(--font-body);color:var(--gray-900);background:var(--gray-50);font-size:14px;line-height:1.6}
+  
+  /* LAYOUT */
+  .shell{display:flex;min-height:100vh}
+  .sidebar{width:220px;flex-shrink:0;background:#fff;border-right:1px solid var(--gray-200);padding:20px 0;position:sticky;top:0;height:100vh;overflow-y:auto}
+  .main{flex:1;padding:32px 36px;max-width:780px}
+  
+  /* SIDEBAR */
+  .sidebar-logo{padding:0 18px 20px;border-bottom:1px solid var(--gray-100)}
+  .sidebar-logo .mark{font-family:var(--font-display);font-size:16px;color:var(--green-dark)}
+  .sidebar-logo .sub{font-size:10px;color:var(--gray-400);letter-spacing:.06em;text-transform:uppercase;margin-top:2px}
+  .nav-group{margin-top:16px}
+  .nav-label{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-400);padding:0 18px 6px}
+  .nav-item{display:block;padding:7px 18px;font-size:13px;color:var(--gray-600);cursor:pointer;border-left:3px solid transparent;transition:all .15s}
+  .nav-item:hover{color:var(--green);background:var(--green-light)}
+  .nav-item.active{color:var(--green);font-weight:500;border-left-color:var(--green);background:var(--green-light)}
+  
+  /* SECTIONS */
+  .section{display:none}
+  .section.active{display:block}
+  
+  /* TYPOGRAPHY */
+  h1{font-family:var(--font-display);font-size:28px;color:var(--green-dark);margin-bottom:6px;line-height:1.2}
+  h2{font-family:var(--font-display);font-size:20px;color:var(--green-dark);margin:28px 0 10px}
+  h3{font-size:13px;font-weight:600;color:var(--gray-900);margin:20px 0 8px;text-transform:uppercase;letter-spacing:.05em}
+  p{color:var(--gray-600);margin-bottom:10px;font-size:14px;line-height:1.65}
+  
+  /* HERO BANNER */
+  .hero{background:linear-gradient(135deg,var(--green-dark) 0%,var(--green-mid) 100%);border-radius:var(--radius);padding:28px 28px 24px;margin-bottom:28px;color:#fff}
+  .hero h1{color:#fff;font-size:26px}
+  .hero p{color:rgba(255,255,255,.75);font-size:13px;margin-top:6px}
+  .hero-badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+  .badge{font-size:11px;font-weight:500;padding:4px 10px;border-radius:20px;background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.25)}
+  
+  /* CARDS */
+  .card{background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);padding:18px 20px;margin-bottom:14px}
+  .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:18px}
+  .card-sm{background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);padding:14px 16px}
+  .card-sm h4{font-size:13px;font-weight:600;color:var(--green-dark);margin-bottom:4px}
+  .card-sm p{font-size:12px;margin:0;color:var(--gray-400)}
+  
+  /* TAGS */
+  .tag{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:500;padding:3px 8px;border-radius:4px;margin-right:4px}
+  .tag-get{background:#E8F5EE;color:var(--green)}
+  .tag-post{background:#EAF2FB;color:var(--blue)}
+  .tag-req{background:#FEF3E0;color:var(--amber)}
+  .tag-sec{background:#FDECEA;color:var(--red)}
+  
+  /* PAGE BOXES */
+  .page-row{display:flex;gap:10px;align-items:stretch;margin-bottom:10px;flex-wrap:wrap}
+  .page-box{flex:1;min-width:130px;background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius-sm);padding:12px 14px;cursor:pointer;transition:border-color .15s,box-shadow .15s}
+  .page-box:hover{border-color:var(--green);box-shadow:0 2px 8px rgba(30,100,60,.08)}
+  .page-box .icon{font-size:18px;margin-bottom:4px}
+  .page-box .title{font-size:12px;font-weight:600;color:var(--gray-900)}
+  .page-box .desc{font-size:11px;color:var(--gray-400);margin-top:2px}
+  .page-box .pill{font-size:10px;background:var(--green-light);color:var(--green);padding:2px 6px;border-radius:10px;display:inline-block;margin-top:4px;font-weight:500}
+  .page-box .pill-opt{font-size:10px;background:var(--amber-light);color:var(--amber);padding:2px 6px;border-radius:10px;display:inline-block;margin-top:4px;font-weight:500}
+
+  /* FLOW STEPS */
+  .flow{display:flex;align-items:flex-start;gap:0;margin:16px 0;overflow-x:auto;padding-bottom:6px}
+  .flow-step{flex-shrink:0;background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius-sm);padding:10px 14px;min-width:120px;text-align:center;font-size:12px}
+  .flow-step .num{width:22px;height:22px;background:var(--green);color:#fff;border-radius:50%;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 6px}
+  .flow-step .label{font-weight:600;color:var(--gray-900);font-size:11px}
+  .flow-step .sub{color:var(--gray-400);font-size:10px;margin-top:2px}
+  .flow-arrow{padding:0 4px;display:flex;align-items:center;color:var(--gray-200);font-size:18px;flex-shrink:0;margin-top:10px}
+  
+  /* CODE */
+  pre{background:var(--gray-900);color:#D4F1BE;border-radius:var(--radius-sm);padding:14px 16px;font-family:var(--font-mono);font-size:12px;overflow-x:auto;margin:10px 0;line-height:1.7}
+  .code-label{font-family:var(--font-mono);font-size:11px;background:var(--gray-100);color:var(--gray-600);padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);display:inline-block;margin-bottom:6px}
+  code{font-family:var(--font-mono);font-size:12px;background:var(--gray-100);padding:1px 5px;border-radius:3px;color:var(--green-dark)}
+  
+  /* TRUST ITEMS */
+  .trust-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:12px 0}
+  .trust-item{background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius-sm);padding:14px;display:flex;gap:12px;align-items:flex-start}
+  .trust-icon{width:32px;height:32px;border-radius:8px;background:var(--green-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
+  .trust-item h4{font-size:12px;font-weight:600;color:var(--gray-900);margin-bottom:2px}
+  .trust-item p{font-size:11px;color:var(--gray-400);margin:0}
+  
+  /* RULE LIST */
+  .rule-list{list-style:none;padding:0;margin:8px 0}
+  .rule-list li{padding:7px 0 7px 22px;position:relative;border-bottom:1px solid var(--gray-100);font-size:13px;color:var(--gray-600)}
+  .rule-list li:last-child{border-bottom:none}
+  .rule-list li::before{content:'';position:absolute;left:0;top:13px;width:8px;height:8px;border-radius:50%;background:var(--green)}
+  
+  /* PALETTE */
+  .palette{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+  .swatch{border-radius:var(--radius-sm);padding:10px 14px;font-size:11px;font-weight:600;min-width:90px}
+
+  /* SECTION DIVIDER */
+  .divider{height:1px;background:var(--gray-100);margin:24px 0}
+  
+  /* ACTIVE NAV HIGHLIGHT */
+  .progress-bar{height:3px;background:var(--green);border-radius:2px;margin-bottom:24px;width:100%}
+
+  /* RESPONSIVE */
+  @media(max-width:640px){
+    .sidebar{display:none}
+    .main{padding:20px 16px}
+  }
+</style>
+
+<h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">TMJ Foods Online Shop — Developer Guideline</h2>
+
+<div class="shell">
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <div class="mark">TMJ Foods</div>
+      <div class="sub">Dev Guideline v1.0</div>
+    </div>
+    <div class="nav-group">
+      <div class="nav-label">Overview</div>
+      <div class="nav-item active" onclick="show('overview',this)">Project Brief</div>
+      <div class="nav-item" onclick="show('stack',this)">Tech Stack</div>
+    </div>
+    <div class="nav-group">
+      <div class="nav-label">Architecture</div>
+      <div class="nav-item" onclick="show('pages',this)">Page Map</div>
+      <div class="nav-item" onclick="show('navigation',this)">Navigation Rules</div>
+      <div class="nav-item" onclick="show('ux',this)">UX Principles</div>
+    </div>
+    <div class="nav-group">
+      <div class="nav-label">eCommerce</div>
+      <div class="nav-item" onclick="show('products',this)">Product System</div>
+      <div class="nav-item" onclick="show('cart',this)">Cart & Checkout</div>
+      <div class="nav-item" onclick="show('paystack',this)">Paystack Setup</div>
+    </div>
+    <div class="nav-group">
+      <div class="nav-label">Brand & Trust</div>
+      <div class="nav-item" onclick="show('design',this)">Design System</div>
+      <div class="nav-item" onclick="show('trust',this)">Trust Signals</div>
+    </div>
+    <div class="nav-group">
+      <div class="nav-label">Backend</div>
+      <div class="nav-item" onclick="show('backend',this)">API & Data</div>
+      <div class="nav-item" onclick="show('seo',this)">SEO & Performance</div>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+
+    <!-- OVERVIEW -->
+    <div id="overview" class="section active">
+      <div class="hero">
+        <h1>TMJ Foods — Online Shop<br>Developer Guideline</h1>
+        <p>A complete specification for building a high-trust, easy-to-navigate eCommerce website for TMJ Foods, with Paystack payment integration for local and international customers.</p>
+        <div class="hero-badges">
+          <span class="badge">Next.js 14</span>
+          <span class="badge">Paystack</span>
+          <span class="badge">MongoDB</span>
+          <span class="badge">Cloudinary</span>
+          <span class="badge">Nigeria + Diaspora</span>
+          <span class="badge">Mobile-First</span>
+        </div>
+      </div>
+
+      <h2>Project Goals</h2>
+      <div class="card-grid">
+        <div class="card-sm"><h4>Easy to Navigate</h4><p>Any visitor — from a first-time buyer in Lagos to a diaspora customer in London — should find and buy in under 3 minutes.</p></div>
+        <div class="card-sm"><h4>Trust & Credibility</h4><p>Visual design, security badges, testimonials, and transparent policies must make TMJ Foods feel completely safe to buy from.</p></div>
+        <div class="card-sm"><h4>Seamless Payments</h4><p>Paystack handles all payment types: cards, bank transfer, USSD, and international cards — with zero friction at checkout.</p></div>
+        <div class="card-sm"><h4>Export-Ready</h4><p>The shop must sell to customers across Nigeria and internationally — USD, GBP, and NGN pricing support.</p></div>
+      </div>
+
+      <h2>Target Audiences</h2>
+      <div class="card">
+        <ul class="rule-list">
+          <li><strong>Health-conscious Nigerians</strong> — urban adults managing diabetes, weight, or gut health, mostly on mobile, primarily paying via bank transfer or card.</li>
+          <li><strong>African diaspora</strong> — Nigerians abroad in UK, USA, Canada, Europe who want familiar, clean-label ingredients. Pay via international card.</li>
+          <li><strong>Fitness & wellness community</strong> — gym-goers and athletes drawn to SORPLA AlphaGrain. Active on Instagram and TikTok.</li>
+          <li><strong>Mothers & families</strong> — buying for children and elderly; need simple navigation, clear ingredients, and reassurance on quality.</li>
+          <li><strong>Wholesale buyers & retailers</strong> — restaurant owners and health stores needing a bulk inquiry channel.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- TECH STACK -->
+    <div id="stack" class="section">
+      <h1>Recommended Tech Stack</h1>
+      <p style="margin-bottom:20px">Chosen for speed, developer familiarity, and solid Paystack ecosystem support.</p>
+      
+      <h2>Frontend</h2>
+      <div class="card-grid">
+        <div class="card-sm"><h4>Next.js 14 (App Router)</h4><p>React framework with built-in SSR, image optimisation, and SEO-friendly routing.</p></div>
+        <div class="card-sm"><h4>Tailwind CSS</h4><p>Utility-first CSS for rapid, consistent styling. Custom tokens for TMJ brand colours.</p></div>
+        <div class="card-sm"><h4>Framer Motion</h4><p>Subtle product card animations and page transitions — keeps the site feeling alive.</p></div>
+      </div>
+
+      <h2>Backend & Database</h2>
+      <div class="card-grid">
+        <div class="card-sm"><h4>Next.js API Routes</h4><p>Server-side endpoints for order creation, webhook handling, and product management.</p></div>
+        <div class="card-sm"><h4>MongoDB Atlas</h4><p>Flexible NoSQL for products, orders, and customers. Free tier handles launch-phase traffic.</p></div>
+        <div class="card-sm"><h4>Cloudinary</h4><p>Image hosting + CDN + auto-format (WebP) for all product photos. Automatic compression.</p></div>
+      </div>
+
+      <h2>Payments & Auth</h2>
+      <div class="card-grid">
+        <div class="card-sm"><h4>Paystack</h4><p>Primary payment gateway. Handles NGN, USD, GBP. Cards, bank transfer, USSD, Apple Pay.</p></div>
+        <div class="card-sm"><h4>NextAuth.js</h4><p>Optional customer accounts — email/password + Google OAuth. Guest checkout must always work.</p></div>
+        <div class="card-sm"><h4>Resend / Nodemailer</h4><p>Transactional emails: order confirmations, shipping updates, receipts.</p></div>
+      </div>
+
+      <h2>Hosting & DevOps</h2>
+      <div class="card-grid">
+        <div class="card-sm"><h4>Vercel</h4><p>Zero-config Next.js deployment. Global CDN, automatic HTTPS, preview URLs for every PR.</p></div>
+        <div class="card-sm"><h4>GitHub Actions</h4><p>CI/CD pipeline: lint → test → deploy to staging → production on merge to main.</p></div>
+        <div class="card-sm"><h4>Sentry</h4><p>Error monitoring. Catch payment failures and broken pages before customers report them.</p></div>
+      </div>
+    </div>
+
+    <!-- PAGE MAP -->
+    <div id="pages" class="section">
+      <h1>Page Map</h1>
+      <p>Every page the developer must build, with its core purpose and priority level.</p>
+      <div class="divider"></div>
+
+      <h3>Core Pages (Must-Have)</h3>
+      <div class="page-row">
+        <div class="page-box"><div class="icon">🏠</div><div class="title">Homepage</div><div class="desc">Brand hero, products, benefits, social proof</div><span class="pill">Core</span></div>
+        <div class="page-box"><div class="icon">🛍</div><div class="title">Shop / All Products</div><div class="desc">Full product grid with filters</div><span class="pill">Core</span></div>
+        <div class="page-box"><div class="icon">📦</div><div class="title">Product Detail</div><div class="desc">Images, benefits, add to cart, reviews</div><span class="pill">Core</span></div>
+        <div class="page-box"><div class="icon">🛒</div><div class="title">Cart</div><div class="desc">Persistent cart, quantity control, totals</div><span class="pill">Core</span></div>
+      </div>
+      <div class="page-row">
+        <div class="page-box"><div class="icon">💳</div><div class="title">Checkout</div><div class="desc">Address, delivery, Paystack payment</div><span class="pill">Core</span></div>
+        <div class="page-box"><div class="icon">✅</div><div class="title">Order Success</div><div class="desc">Confirmation, order summary, next steps</div><span class="pill">Core</span></div>
+        <div class="page-box"><div class="icon">ℹ️</div><div class="title">About Us</div><div class="desc">Brand story, mission, farmer sourcing</div><span class="pill">Core</span></div>
+        <div class="page-box"><div class="icon">📞</div><div class="title">Contact</div><div class="desc">Form + WhatsApp CTA, wholesale inquiry</div><span class="pill">Core</span></div>
+      </div>
+
+      <h3>Supporting Pages (Phase 1 Launch)</h3>
+      <div class="page-row">
+        <div class="page-box"><div class="icon">📋</div><div class="title">FAQ</div><div class="desc">Shipping, returns, ingredients, health claims</div><span class="pill-opt">Phase 1</span></div>
+        <div class="page-box"><div class="icon">🚚</div><div class="title">Shipping Policy</div><div class="desc">Rates by state, international delivery</div><span class="pill-opt">Phase 1</span></div>
+        <div class="page-box"><div class="icon">🔄</div><div class="title">Returns Policy</div><div class="desc">Clear, simple refund process</div><span class="pill-opt">Phase 1</span></div>
+        <div class="page-box"><div class="icon">📜</div><div class="title">Privacy Policy</div><div class="desc">Data use, NDPR compliance</div><span class="pill-opt">Phase 1</span></div>
+      </div>
+      <div class="page-row">
+        <div class="page-box"><div class="icon">👤</div><div class="title">My Account</div><div class="desc">Order history, addresses, profile</div><span class="pill-opt">Phase 1</span></div>
+        <div class="page-box"><div class="icon">📝</div><div class="title">Blog / Recipes</div><div class="desc">SEO content, recipe demos, health tips</div><span class="pill-opt">Phase 1</span></div>
+        <div class="page-box"><div class="icon">🌍</div><div class="title">International</div><div class="desc">Diaspora ordering guide + pricing</div><span class="pill-opt">Phase 1</span></div>
+      </div>
+    </div>
+
+    <!-- NAVIGATION RULES -->
+    <div id="navigation" class="section">
+      <h1>Navigation Rules</h1>
+      <p>The navigation system must feel effortless. These are non-negotiable rules.</p>
+      <div class="divider"></div>
+
+      <h2>Header (Always Visible)</h2>
+      <div class="card">
+        <h3>Desktop header structure</h3>
+        <pre>[ TMJ Foods Logo ] ——— [ Shop ] [ About ] [ Blog ] [ Contact ] ——— [ 🔍 Search ] [ 👤 Account ] [ 🛒 Cart (2) ]</pre>
+        <ul class="rule-list">
+          <li>Logo always links to homepage. Cart icon shows live item count badge in green.</li>
+          <li>Sticky header on scroll — transparent at top, white background once scrolled 80px.</li>
+          <li>On mobile: hamburger menu slides in from left. Cart icon stays visible on mobile header.</li>
+          <li>Search opens a full-width overlay — instant results as the user types, no form submit needed.</li>
+        </ul>
+      </div>
+
+      <h2>Footer Structure</h2>
+      <div class="card">
+        <pre>[ TMJ Foods tagline + logo ]  |  [ Shop links ]  |  [ Company links ]  |  [ Support links ]
+——————————————————————————————————————————————————————
+[ WhatsApp CTA ]  |  [ Social icons ]  |  © 2025 TMJ Foods  |  [ Privacy ] [ Terms ]</pre>
+        <ul class="rule-list">
+          <li>A floating WhatsApp chat button appears on every page — bottom right corner, always visible.</li>
+          <li>Footer must include: NAFDAC number (if registered), security/payment logos, trust badges.</li>
+          <li>Newsletter signup in footer: single email field + "Join for health tips" copy.</li>
+        </ul>
+      </div>
+
+      <h2>Breadcrumbs</h2>
+      <ul class="rule-list">
+        <li>Show breadcrumbs on: Product Detail, Checkout, Policies, Blog posts.</li>
+        <li>Format: <code>Home › Shop › Sorghum-Plantain Flour</code></li>
+        <li>Breadcrumbs must be valid Schema.org structured data for SEO.</li>
+      </ul>
+    </div>
+
+    <!-- UX PRINCIPLES -->
+    <div id="ux" class="section">
+      <h1>UX Principles</h1>
+      <p>Every interaction decision should be guided by these principles.</p>
+      <div class="divider"></div>
+
+      <h2>The 3-Minute Rule</h2>
+      <div class="card">
+        <p>A first-time visitor must be able to arrive at the homepage, find a product, add it to cart, complete checkout, and receive a confirmation email — <strong>in under 3 minutes</strong>. Test this on a real mobile device at every major milestone.</p>
+      </div>
+
+      <h2>Mobile-First Always</h2>
+      <ul class="rule-list">
+        <li>Design for 375px width first. Desktop is an enhancement, not the baseline.</li>
+        <li>Touch targets minimum 44px × 44px. "Add to Cart" button full-width on mobile.</li>
+        <li>No horizontal scroll anywhere on mobile. Test with Chrome DevTools + real devices.</li>
+        <li>Bottom navigation bar on mobile: [ Home ] [ Shop ] [ Cart ] [ Account ]</li>
+      </ul>
+
+      <h2>Product Discovery Flow</h2>
+      <div class="flow">
+        <div class="flow-step"><div class="num">1</div><div class="label">Homepage Hero</div><div class="sub">Single CTA to Shop</div></div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-step"><div class="num">2</div><div class="label">Shop Grid</div><div class="sub">Filter by health goal</div></div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-step"><div class="num">3</div><div class="label">Product Detail</div><div class="sub">Benefits + Add to Cart</div></div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-step"><div class="num">4</div><div class="label">Cart Slide-Out</div><div class="sub">Quick review + proceed</div></div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-step"><div class="num">5</div><div class="label">Checkout</div><div class="sub">Address + Paystack</div></div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-step"><div class="num">6</div><div class="label">Success Page</div><div class="sub">Email confirmation</div></div>
+      </div>
+
+      <h2>Key UX Rules</h2>
+      <ul class="rule-list">
+        <li><strong>Cart as slide-out drawer</strong> — opening the cart should not navigate away from the current page. A right-side drawer overlays the page so the customer can keep browsing.</li>
+        <li><strong>Guest checkout is mandatory</strong> — never force account creation. Offer it as an option after payment succeeds.</li>
+        <li><strong>Progress indicator at checkout</strong> — show 3 steps: Delivery Info → Payment → Confirmation. Always show where the customer is.</li>
+        <li><strong>Out-of-stock is never a dead end</strong> — show a "Notify me when available" email capture instead of a disabled button.</li>
+        <li><strong>Empty states have CTAs</strong> — an empty cart says "Your cart is empty. Explore our products →" with a link to the Shop.</li>
+        <li><strong>Loading states on every async action</strong> — adding to cart, submitting forms, processing payment all show a loading indicator. Never leave the user guessing.</li>
+      </ul>
+    </div>
+
+    <!-- PRODUCT SYSTEM -->
+    <div id="products" class="section">
+      <h1>Product System</h1>
+      <p>How products are structured, displayed, and managed.</p>
+      <div class="divider"></div>
+
+      <h2>Product Data Model</h2>
+      <div class="code-label">MongoDB — products collection</div>
+      <pre>{
+  _id: ObjectId,
+  name: "Sorghum-Plantain Flour",
+  slug: "sorghum-plantain-flour",
+  shortDesc: "Low-GI, gut-friendly, gluten-free flour blend",
+  description: "...", // Full rich text (Markdown)
+  images: ["cloudinary_url_1", "cloudinary_url_2"],
+  price: { ngn: 3500, usd: 4.50, gbp: 3.50 },
+  weight: "1kg",
+  category: "flour",
+  tags: ["gluten-free", "diabetic-friendly", "gut-health"],
+  healthBenefits: ["Blood Sugar Control", "Gut Health", "Weight Management"],
+  ingredients: "Whole grain sorghum, unripe plantain",
+  nutritionFacts: { calories: 350, protein: 9, carbs: 72, fiber: 6, fat: 3 },
+  stock: 120,
+  featured: true,
+  ratings: { average: 4.8, count: 47 },
+  reviews: [ { user, rating, comment, date } ],
+  createdAt: Date,
+  updatedAt: Date
+}</pre>
+
+      <h2>Product Card Component</h2>
+      <ul class="rule-list">
+        <li>Show: product image (square, 1:1 ratio), product name, short description (max 2 lines), price in NGN (toggle to USD/GBP), star rating, and an "Add to Cart" button.</li>
+        <li>On hover (desktop): a subtle lift shadow and a quick-view icon. On touch (mobile): immediate tap response with visual feedback.</li>
+        <li>Display health benefit tags under the product name — e.g. <span class="tag tag-get">Gluten-Free</span><span class="tag tag-get">Low GI</span><span class="tag tag-req">Gut Health</span></li>
+        <li>Out-of-stock products show a grey overlay with "Notify Me" — never remove them from the grid.</li>
+      </ul>
+
+      <h2>Product Detail Page Must Have</h2>
+      <ul class="rule-list">
+        <li><strong>Image gallery</strong> — main image with thumbnail strip. Support swipe on mobile. Include lifestyle/usage photos alongside the pack shot.</li>
+        <li><strong>Functional benefits section</strong> — visually distinct icons or pills for each health benefit. This is what TMJ Foods is selling — make it prominent.</li>
+        <li><strong>How to use</strong> — a brief cooking/serving guide. Customers often don't know how to use plantain flour.</li>
+        <li><strong>Ingredients & nutrition facts</strong> — in an expandable accordion section. Required for food products.</li>
+        <li><strong>Customer reviews</strong> — star rating breakdown + individual review cards. Show average prominently near the Add to Cart button.</li>
+        <li><strong>Related products</strong> — "Customers also bought" carousel of 4 products at the bottom.</li>
+        <li><strong>Quantity selector</strong> — allow 1–12 units. Default to 1.</li>
+      </ul>
+    </div>
+
+    <!-- CART & CHECKOUT -->
+    <div id="cart" class="section">
+      <h1>Cart & Checkout</h1>
+      <p>The checkout flow must be as short and reassuring as possible.</p>
+      <div class="divider"></div>
+
+      <h2>Cart Behaviour</h2>
+      <ul class="rule-list">
+        <li>Cart is stored in <code>localStorage</code> for guest users and synced to the database for logged-in users.</li>
+        <li>Cart persists across page refreshes and browser sessions (7-day TTL for guests).</li>
+        <li>Changing quantity in the cart slide-out updates the total instantly — no re-loading.</li>
+        <li>Show a "Free delivery on orders over ₦15,000" banner inside the cart with a progress bar showing how close they are.</li>
+        <li>Include a promo/discount code field in the cart — even if no codes are active at launch, the field must be built.</li>
+      </ul>
+
+      <h2>Checkout Steps</h2>
+      <div class="flow">
+        <div class="flow-step"><div class="num">1</div><div class="label">Delivery Details</div><div class="sub">Name, address, phone, state</div></div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-step"><div class="num">2</div><div class="label">Delivery Method</div><div class="sub">Standard / Express</div></div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-step"><div class="num">3</div><div class="label">Order Review</div><div class="sub">Final summary before pay</div></div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-step"><div class="num">4</div><div class="label">Paystack Payment</div><div class="sub">Popup / redirect</div></div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-step"><div class="num">5</div><div class="label">Confirmation</div><div class="sub">Email + success page</div></div>
+      </div>
+
+      <h2>Form Rules</h2>
+      <ul class="rule-list">
+        <li><strong>Inline validation</strong> — validate each field on blur, not on submit. Show errors immediately in red below the field.</li>
+        <li><strong>Nigerian phone numbers</strong> — accept formats: <code>08012345678</code>, <code>+2348012345678</code>, <code>2348012345678</code>. Auto-normalise before saving.</li>
+        <li><strong>State selector</strong> — use a dropdown of all 36 Nigerian states + FCT for domestic orders. International option available for diaspora.</li>
+        <li><strong>Address autocomplete</strong> — integrate Google Places API for Nigerian address suggestions. Falls back to manual input.</li>
+        <li><strong>Order summary always visible</strong> — on desktop: sticky right column. On mobile: collapsible summary at top of checkout page.</li>
+      </ul>
+    </div>
+
+    <!-- PAYSTACK -->
+    <div id="paystack" class="section">
+      <h1>Paystack Integration</h1>
+      <p>Full specification for implementing Paystack payments correctly and securely.</p>
+      <div class="divider"></div>
+
+      <h2>Accepted Payment Methods</h2>
+      <div class="card-grid">
+        <div class="card-sm"><h4>Debit / Credit Card</h4><p>Visa, Mastercard, Verve. Works for local and international customers.</p></div>
+        <div class="card-sm"><h4>Bank Transfer</h4><p>Most common for Nigerian customers. Paystack generates a dynamic account number.</p></div>
+        <div class="card-sm"><h4>USSD</h4><p>No internet required. Customer dials a short code on their phone to pay.</p></div>
+        <div class="card-sm"><h4>Mobile Money</h4><p>GTMobileMoney and other Paystack-supported wallets.</p></div>
+      </div>
+
+      <h2>Integration Flow</h2>
+      <div class="flow">
+        <div class="flow-step"><div class="num">1</div><div class="label">Customer clicks Pay</div><div class="sub">Frontend triggers init</div></div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-step"><div class="num">2</div><div class="label">Server creates txn</div><div class="sub">POST /api/checkout</div></div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-step"><div class="num">3</div><div class="label">Paystack Popup</div><div class="sub">Customer pays</div></div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-step"><div class="num">4</div><div class="label">Webhook fires</div><div class="sub">charge.success event</div></div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-step"><div class="num">5</div><div class="label">Verify on server</div><div class="sub">GET /verify/{ref}</div></div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-step"><div class="num">6</div><div class="label">Fulfil order</div><div class="sub">Save + send email</div></div>
+      </div>
+
+      <h2>Server-Side Initialization</h2>
+      <div class="code-label">pages/api/checkout.js</div>
+      <pre>// POST /api/checkout
+// Called when customer clicks "Pay Now"
+export default async function handler(req, res) {
+  const { cartItems, customerEmail, deliveryAddress } = req.body;
+  
+  // 1. Calculate total on the server (never trust client-side total)
+  const totalKobo = calculateTotal(cartItems) * 100; // Paystack uses kobo
+  
+  // 2. Create order in DB with status: "pending"
+  const order = await Order.create({
+    items: cartItems,
+    total: totalKobo / 100,
+    customer: { email: customerEmail, address: deliveryAddress },
+    status: "pending",
+    reference: generateRef() // e.g. "TMJ-1712345678-ABCD"
+  });
+  
+  // 3. Initialize Paystack transaction
+  const response = await fetch("https://api.paystack.co/transaction/initialize", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: customerEmail,
+      amount: totalKobo,
+      reference: order.reference,
+      currency: "NGN", // or "USD" / "GBP" for international
+      callback_url: `${process.env.BASE_URL}/order/success`,
+      metadata: { orderId: order._id.toString() }
+    }),
+  });
+  
+  const data = await response.json();
+  return res.json({ authorizationUrl: data.data.authorization_url, reference: order.reference });
+}</pre>
+
+      <h2>Webhook Handler</h2>
+      <div class="code-label">pages/api/webhooks/paystack.js</div>
+      <pre>import crypto from "crypto";
+
+export default async function handler(req, res) {
+  // 1. Verify webhook signature (CRITICAL — prevents fraud)
+  const hash = crypto
+    .createHmac("sha512", process.env.PAYSTACK_SECRET_KEY)
+    .update(JSON.stringify(req.body))
+    .digest("hex");
+
+  if (hash !== req.headers["x-paystack-signature"]) {
+    return res.status(401).json({ error: "Invalid signature" });
+  }
+
+  const { event, data } = req.body;
+
+  if (event === "charge.success") {
+    // 2. Verify the transaction independently (never trust webhook alone)
+    const verify = await fetch(`https://api.paystack.co/transaction/verify/${data.reference}`, {
+      headers: { Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}` }
+    });
+    const { data: txn } = await verify.json();
+
+    if (txn.status === "success") {
+      // 3. Update order status to "paid"
+      await Order.findOneAndUpdate(
+        { reference: data.reference },
+        { status: "paid", paidAt: new Date(), paystackId: txn.id }
+      );
+      // 4. Send confirmation email
+      await sendOrderConfirmationEmail(txn.metadata.orderId);
+      // 5. Reduce stock counts
+      await updateInventory(txn.metadata.orderId);
+    }
+  }
+
+  return res.status(200).json({ received: true });
+}</pre>
+
+      <h2>Security Rules (Non-Negotiable)</h2>
+      <div class="card" style="border-left:3px solid var(--red);padding-left:18px">
+        <ul class="rule-list">
+          <li><span class="tag tag-sec">CRITICAL</span> Always verify the Paystack webhook signature using HMAC SHA-512. Reject any webhook that fails.</li>
+          <li><span class="tag tag-sec">CRITICAL</span> Always independently verify transactions on the server using the Paystack Verify endpoint. Never fulfil an order based on client-side callback alone.</li>
+          <li><span class="tag tag-sec">CRITICAL</span> Store <code>PAYSTACK_SECRET_KEY</code> in environment variables only. Never commit it to source code or expose it to the frontend.</li>
+          <li><span class="tag tag-req">IMPORTANT</span> Calculate order totals on the server from the database price, not from values sent by the frontend. A user could manipulate the frontend price.</li>
+          <li><span class="tag tag-req">IMPORTANT</span> Use idempotency — check if an order is already marked "paid" before processing a webhook, to prevent double-fulfilment from duplicate webhook deliveries.</li>
+          <li><span class="tag tag-req">IMPORTANT</span> Use Paystack's Test Keys during development. Only switch to Live Keys in the production environment.</li>
+        </ul>
+      </div>
+
+      <h2>Environment Variables</h2>
+      <div class="code-label">.env.local</div>
+      <pre>PAYSTACK_SECRET_KEY=sk_test_xxxxxxxxxxxxxxxxxxxx  # Switch to sk_live_ in prod
+PAYSTACK_PUBLIC_KEY=pk_test_xxxxxxxxxxxxxxxxxxxx  # Used in frontend
+BASE_URL=https://www.tmjfoods.com
+MONGODB_URI=mongodb+srv://...
+CLOUDINARY_URL=cloudinary://...
+EMAIL_FROM=orders@tmjfoods.com</pre>
+    </div>
+
+    <!-- DESIGN SYSTEM -->
+    <div id="design" class="section">
+      <h1>Design System</h1>
+      <p>The visual language of the TMJ Foods website — consistent, trustworthy, and distinctly African.</p>
+      <div class="divider"></div>
+
+      <h2>Colour Palette</h2>
+      <div class="palette">
+        <div class="swatch" style="background:#1C6B38;color:#fff">Forest Green<br><code style="background:rgba(255,255,255,.2);color:#fff">#1C6B38</code></div>
+        <div class="swatch" style="background:#2E8B57;color:#fff">Leaf Green<br><code style="background:rgba(255,255,255,.2);color:#fff">#2E8B57</code></div>
+        <div class="swatch" style="background:#E8F5EE;color:#1C6B38;border:1px solid #C8E6D4">Mint Tint<br><code>#E8F5EE</code></div>
+        <div class="swatch" style="background:#F5A623;color:#5C2800">Sorghum Gold<br><code>#F5A623</code></div>
+        <div class="swatch" style="background:#FEF3E0;color:#8B5200;border:1px solid #F5D9A0">Warm Cream<br><code>#FEF3E0</code></div>
+        <div class="swatch" style="background:#F9F9F7;color:#5C5B54;border:1px solid #DDDCD3">Off White<br><code>#F9F9F7</code></div>
+        <div class="swatch" style="background:#1E1E1C;color:#fff">Near Black<br><code>#1E1E1C</code></div>
+      </div>
+
+      <h2>Typography</h2>
+      <div class="card">
+        <ul class="rule-list">
+          <li><strong>Display / Headings:</strong> DM Serif Display — warm, authoritative, premium. Use for H1, H2, brand-level headlines.</li>
+          <li><strong>Body / UI:</strong> DM Sans — clean, legible, modern. Use for all body text, navigation, buttons, forms.</li>
+          <li><strong>Code / Data:</strong> JetBrains Mono — only for ingredient codes, order numbers, and admin-facing data.</li>
+          <li><strong>Scale:</strong> H1: 40px / H2: 28px / H3: 20px / Body: 16px / Small: 14px / Caption: 12px.</li>
+          <li><strong>Line height:</strong> 1.2 for headings, 1.65 for body text. Never use line-height below 1.2.</li>
+        </ul>
+      </div>
+
+      <h2>Button System</h2>
+      <div class="card-grid">
+        <div class="card-sm"><h4>Primary CTA</h4><p>Forest Green background, white text, 48px height. Used for: Add to Cart, Pay Now, Subscribe.</p></div>
+        <div class="card-sm"><h4>Secondary</h4><p>White background, green border and text. Used for: View Product, Learn More, Continue Shopping.</p></div>
+        <div class="card-sm"><h4>Ghost / Tertiary</h4><p>No border, green text only. Used for: text links within content and breadcrumb paths.</p></div>
+        <div class="card-sm"><h4>Destructive</h4><p>Red, used only for Remove from Cart. Always requires a second confirmation before action.</p></div>
+      </div>
+
+      <h2>Imagery Guidelines</h2>
+      <ul class="rule-list">
+        <li><strong>Product photos</strong> — clean white or cream background. Square (1:1) crop for product grid. Include at least one lifestyle shot per product.</li>
+        <li><strong>Avoid stock photos of generic food</strong> — only use actual TMJ Foods products and real cooking/usage scenarios.</li>
+        <li><strong>People shown</strong> — diverse representation of the actual target audience: Nigerian families, professional women, fitness-focused men.</li>
+        <li><strong>Compression</strong> — all images served via Cloudinary CDN with automatic WebP conversion. Max product image size: 200KB.</li>
+      </ul>
+    </div>
+
+    <!-- TRUST SIGNALS -->
+    <div id="trust" class="section">
+      <h1>Trust Signals</h1>
+      <p>Everything on the site must work together to make a first-time buyer feel safe and confident purchasing from TMJ Foods.</p>
+      <div class="divider"></div>
+
+      <h2>Site-Wide Trust Elements</h2>
+      <div class="trust-grid">
+        <div class="trust-item"><div class="trust-icon">🔒</div><div><h4>SSL Certificate</h4><p>HTTPS on every page. Green padlock always visible. Never serve any page over HTTP.</p></div></div>
+        <div class="trust-item"><div class="trust-icon">💳</div><div><h4>Paystack Security Badge</h4><p>Display "Secured by Paystack" logo near every payment field and in the footer.</p></div></div>
+        <div class="trust-item"><div class="trust-icon">✅</div><div><h4>NAFDAC Registration</h4><p>Display NAFDAC number prominently on product pages and in the footer if registered.</p></div></div>
+        <div class="trust-item"><div class="trust-icon">⭐</div><div><h4>Real Customer Reviews</h4><p>Verified reviews with customer names and photos. Never use fake or templated reviews.</p></div></div>
+        <div class="trust-item"><div class="trust-icon">📦</div><div><h4>Clear Return Policy</h4><p>A visible "Easy Returns" or satisfaction guarantee message near every Add to Cart button.</p></div></div>
+        <div class="trust-item"><div class="trust-icon">💬</div><div><h4>WhatsApp Support</h4><p>Floating WhatsApp button on every page. Customers want to reach a real person quickly.</p></div></div>
+        <div class="trust-item"><div class="trust-icon">🚚</div><div><h4>Shipping Transparency</h4><p>Show estimated delivery date on product page and in cart before the customer pays.</p></div></div>
+        <div class="trust-item"><div class="trust-icon">📰</div><div><h4>Media Mentions</h4><p>If TMJ Foods has been featured anywhere — show those logos in a "As seen in" strip.</p></div></div>
+      </div>
+
+      <h2>Checkout Trust Reinforcement</h2>
+      <div class="card">
+        <p>At the point of payment — the highest-anxiety moment for any online shopper — these elements must be visible:</p>
+        <ul class="rule-list">
+          <li>Order summary with item names, quantities, and prices on the right side of the checkout page.</li>
+          <li>"Your payment is secured by Paystack" with the Paystack logo directly above the Pay Now button.</li>
+          <li>Accepted payment method icons: Visa, Mastercard, Verve, bank transfer, USSD.</li>
+          <li>A brief reassurance line: "We will never store your card details. All payments are processed securely by Paystack."</li>
+          <li>Customer support phone number or WhatsApp link visible in case of any issue during checkout.</li>
+          <li>Clear total breakdown: Subtotal + Delivery Fee + Discount (if any) = Grand Total. No surprise charges.</li>
+        </ul>
+      </div>
+
+      <h2>Error Handling for Failed Payments</h2>
+      <ul class="rule-list">
+        <li>If Paystack returns a failed payment: show a clear, friendly error message — "Your payment didn't go through. Please try again or choose a different payment method."</li>
+        <li>Never say "Error 402" or technical jargon. Plain English always.</li>
+        <li>Offer the customer to: try again with same method, choose a different payment method, or contact support via WhatsApp.</li>
+        <li>The cart and delivery details must be preserved — never make the customer re-enter their information after a failed payment.</li>
+      </ul>
+    </div>
+
+    <!-- BACKEND / API -->
+    <div id="backend" class="section">
+      <h1>API & Data Architecture</h1>
+      <p>All the server-side routes the developer must build.</p>
+      <div class="divider"></div>
+
+      <h2>API Route Map</h2>
+      <div class="card">
+        <ul class="rule-list">
+          <li><span class="tag tag-get">GET</span> <code>/api/products</code> — All products, supports ?category= and ?tag= query filters</li>
+          <li><span class="tag tag-get">GET</span> <code>/api/products/[slug]</code> — Single product by slug</li>
+          <li><span class="tag tag-post">POST</span> <code>/api/checkout</code> — Create order + initialize Paystack transaction</li>
+          <li><span class="tag tag-get">GET</span> <code>/api/orders/[ref]</code> — Fetch order by reference (for success page)</li>
+          <li><span class="tag tag-post">POST</span> <code>/api/webhooks/paystack</code> — Receive and verify Paystack payment events</li>
+          <li><span class="tag tag-post">POST</span> <code>/api/reviews</code> — Submit a product review (auth required)</li>
+          <li><span class="tag tag-post">POST</span> <code>/api/newsletter</code> — Subscribe an email address to the newsletter</li>
+          <li><span class="tag tag-post">POST</span> <code>/api/contact</code> — Submit the contact / wholesale inquiry form</li>
+          <li><span class="tag tag-post">POST</span> <code>/api/notify-stock</code> — Register interest for out-of-stock products</li>
+          <li><span class="tag tag-get">GET</span> <code>/api/shipping-rates</code> — Calculate delivery fee based on Nigerian state or country</li>
+        </ul>
+      </div>
+
+      <h2>Database Collections</h2>
+      <div class="card-grid">
+        <div class="card-sm"><h4>products</h4><p>All product data including prices, stock, reviews, and health metadata.</p></div>
+        <div class="card-sm"><h4>orders</h4><p>Every order with status tracking: pending → paid → processing → shipped → delivered.</p></div>
+        <div class="card-sm"><h4>customers</h4><p>Optional registered users with saved addresses and order history.</p></div>
+        <div class="card-sm"><h4>newsletter</h4><p>Email subscribers, subscribed date, source page.</p></div>
+      </div>
+
+      <h2>Order Status Flow</h2>
+      <div class="flow">
+        <div class="flow-step"><div class="num" style="background:var(--gray-400)">1</div><div class="label">Pending</div><div class="sub">Created, not paid</div></div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-step"><div class="num">2</div><div class="label">Paid</div><div class="sub">Paystack confirmed</div></div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-step"><div class="num">3</div><div class="label">Processing</div><div class="sub">Being packed</div></div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-step"><div class="num">4</div><div class="label">Shipped</div><div class="sub">With courier</div></div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-step"><div class="num">5</div><div class="label">Delivered</div><div class="sub">Completed</div></div>
+      </div>
+    </div>
+
+    <!-- SEO & PERFORMANCE -->
+    <div id="seo" class="section">
+      <h1>SEO & Performance</h1>
+      <p>A fast, discoverable site is part of building trust. These are the baseline requirements.</p>
+      <div class="divider"></div>
+
+      <h2>Core Web Vitals Targets</h2>
+      <div class="card-grid">
+        <div class="card-sm"><h4>LCP (Largest Contentful Paint)</h4><p>Target: under 2.5 seconds. Optimise hero image loading — use Next.js <code>priority</code> prop on homepage hero.</p></div>
+        <div class="card-sm"><h4>CLS (Cumulative Layout Shift)</h4><p>Target: under 0.1. Set explicit width/height on all images. No layout shifts during font loading.</p></div>
+        <div class="card-sm"><h4>FID (First Input Delay)</h4><p>Target: under 100ms. Minimise JavaScript bundle size. Use code splitting and lazy loading.</p></div>
+      </div>
+
+      <h2>SEO Checklist</h2>
+      <ul class="rule-list">
+        <li><strong>Meta titles and descriptions</strong> — unique for every page. Product pages: "[Product Name] — Buy Online | TMJ Foods Nigeria". Max 60 chars for title, 160 for description.</li>
+        <li><strong>Open Graph tags</strong> — required for all pages. When shared on WhatsApp or social media, every page should show a proper preview image, title, and description.</li>
+        <li><strong>Structured data (JSON-LD)</strong> — Product schema on product pages (name, price, availability, rating). BreadcrumbList on inner pages. Organization schema on homepage.</li>
+        <li><strong>Canonical URLs</strong> — prevent duplicate content. Set canonical tags on all paginated or filtered shop views.</li>
+        <li><strong>XML Sitemap</strong> — auto-generated at <code>/sitemap.xml</code>. Include all products, blog posts, and main pages. Submit to Google Search Console on launch.</li>
+        <li><strong>robots.txt</strong> — block <code>/api/</code>, <code>/admin/</code>, and <code>/checkout/</code> from indexing. Allow everything else.</li>
+        <li><strong>Image alt text</strong> — every product image must have a descriptive alt attribute. E.g. "TMJ Foods Sorghum-Plantain Flour 1kg pack".</li>
+        <li><strong>Blog content</strong> — write posts targeting search terms like "unripe plantain flour health benefits", "gluten-free Nigerian food", "sorghum flour for diabetics Nigeria".</li>
+      </ul>
+    </div>
+
+  </main>
+</div>
+
+<script>
+function show(id, el) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  el.classList.add('active');
+  window.scrollTo(0,0);
+}
+</script>

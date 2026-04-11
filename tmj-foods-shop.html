@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Shop — TMJ Foods | Functional African Grains</title>
+<meta name="description" content="Shop all TMJ Foods products — Sorghum-Plantain Flour, Unripe Plantain Flour, SORPLA FemmeGrain, AlphaGrain, OrangeKind and more. Gluten-free, locally sourced, functional nutrition."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/shop.css"/>
+</head>
+<body>
+
+<header>
+  <nav class="nav" id="mainNav">
+    <div class="nav-inner">
+      <a href="tmj-foods-homepage.html" class="nav-logo">
+        <div class="leaf-mark"><span>🌿</span></div>
+        TMJ Foods
+      </a>
+      <div class="nav-links">
+        <a href="tmj-foods-homepage.html">Home</a>
+        <a href="#" class="active">Shop</a>
+        <a href="tmj-foods-about.html">About Us</a>
+        <a href="tmj-foods-contact.html">Contact Us</a>
+      </div>
+      <div class="nav-actions">
+        <button class="nav-cart-btn" onclick="openCart()" aria-label="Open cart">
+          🛒
+          <span class="cart-badge" id="cartBadge">0</span>
+        </button>
+        <button class="hamburger" onclick="toggleMobileNav()" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="tmj-foods-homepage.html">Home</a>
+    <a href="#">Shop</a>
+    <a href="tmj-foods-about.html">About Us</a>
+    <a href="tmj-foods-contact.html">Contact Us</a>
+  </nav>
+</header>
+
+<section class="shop-hero">
+  <div class="shop-hero-inner">
+    <div>
+      <p class="shop-hero-eyebrow">The Full Range</p>
+      <h1>Functional Food,<br><em>Built for You</em></h1>
+      <p>Every product in our lineup is formulated around a specific health outcome — gut health, blood sugar, hormonal balance, performance, immunity, and more.</p>
+      <div class="shop-hero-stats">
+        <div class="hero-stat"><div class="num">30</div><div class="lbl">Products</div></div>
+        <div class="hero-stat"><div class="num">100%</div><div class="lbl">Gluten-Free</div></div>
+        <div class="hero-stat"><div class="num">0</div><div class="lbl">Additives</div></div>
+        <div class="hero-stat"><div class="num">2.4k+</div><div class="lbl">Customers</div></div>
+      </div>
+    </div>
+    <div class="shop-hero-packs" aria-hidden="true">
+      <svg class="mini-pack" style="animation-delay:.1s" width="80" height="110" viewBox="0 0 80 110"><rect x="8" y="6" width="64" height="98" rx="10" fill="#1A5C34"/><rect x="8" y="6" width="64" height="18" rx="6" fill="#0F3D22"/><text x="40" y="44" text-anchor="middle" font-size="20">🌾</text><text x="40" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="7" font-weight="700" fill="white">SORGHUM</text><text x="40" y="73" text-anchor="middle" font-family="Georgia,serif" font-size="7" font-weight="700" fill="white">PLANTAIN</text><text x="40" y="90" text-anchor="middle" font-size="7" fill="rgba(255,255,255,0.6)">FLOUR</text></svg>
+      <svg class="mini-pack" style="animation-delay:.2s" width="80" height="120" viewBox="0 0 80 120"><rect x="8" y="6" width="64" height="108" rx="10" fill="#fff" stroke="#D8D4C8" stroke-width="1.5"/><rect x="8" y="6" width="64" height="18" rx="6" fill="#2D7A4F"/><text x="40" y="48" text-anchor="middle" font-size="20">🍌</text><text x="40" y="68" text-anchor="middle" font-family="Georgia,serif" font-size="7" font-weight="700" fill="#1A5C34">PLANTAIN</text><text x="40" y="80" text-anchor="middle" font-size="7" fill="#9A9587">FLOUR</text><text x="40" y="100" text-anchor="middle" font-size="6" fill="#C8891A">LOW GI</text></svg>
+      <svg class="mini-pack" style="animation-delay:.3s" width="80" height="130" viewBox="0 0 80 130"><rect x="8" y="6" width="64" height="118" rx="10" fill="#B05090"/><rect x="8" y="6" width="64" height="18" rx="6" fill="#7B2D6E"/><text x="40" y="52" text-anchor="middle" font-size="20">🌸</text><text x="40" y="72" text-anchor="middle" font-family="Georgia,serif" font-size="8" font-weight="700" fill="white">FEMME</text><text x="40" y="84" text-anchor="middle" font-family="Georgia,serif" font-size="8" font-weight="700" fill="white">GRAIN</text><text x="40" y="104" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.6)">SORPLA</text></svg>
+      <svg class="mini-pack" style="animation-delay:.4s" width="80" height="115" viewBox="0 0 80 115"><rect x="8" y="6" width="64" height="103" rx="10" fill="#1A3A7B"/><rect x="8" y="6" width="64" height="18" rx="6" fill="#0F2456"/><text x="40" y="48" text-anchor="middle" font-size="20">💪</text><text x="40" y="68" text-anchor="middle" font-family="Georgia,serif" font-size="8" font-weight="700" fill="white">ALPHA</text><text x="40" y="80" text-anchor="middle" font-family="Georgia,serif" font-size="8" font-weight="700" fill="white">GRAIN</text><text x="40" y="98" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.55)">SORPLA</text></svg>
+      <svg class="mini-pack" style="animation-delay:.5s" width="80" height="105" viewBox="0 0 80 105"><rect x="8" y="6" width="64" height="93" rx="10" fill="#D45C10"/><rect x="8" y="6" width="64" height="18" rx="6" fill="#9A3A08"/><text x="40" y="44" text-anchor="middle" font-size="20">🍠</text><text x="40" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="7" font-weight="700" fill="white">ORANGE</text><text x="40" y="73" text-anchor="middle" font-family="Georgia,serif" font-size="7" font-weight="700" fill="white">KIND™</text><text x="40" y="90" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.55)">OFSP</text></svg>
+    </div>
+  </div>
+</section>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="tmj-foods-homepage.html">Home</a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">Shop</span>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="shop-layout" id="shopLayout">
+
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-head">
+        <h3>Filters</h3>
+        <span class="clear-filters" onclick="clearAllFilters()">Clear all</span>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-group-label" onclick="toggleGroup(this)">
+          Category <span>▾</span>
+        </div>
+        <div class="filter-check-list" id="catFilters">
+          <label class="filter-check"><input type="checkbox" value="flour" onchange="applyFilters()"><div class="check-box"></div>Flour Blends <span class="count">12</span></label>
+          <label class="filter-check"><input type="checkbox" value="snack" onchange="applyFilters()"><div class="check-box"></div>Healthy Snacks <span class="count">6</span></label>
+          <label class="filter-check"><input type="checkbox" value="cereal" onchange="applyFilters()"><div class="check-box"></div>Cereals & Porridge <span class="count">5</span></label>
+          <label class="filter-check"><input type="checkbox" value="supplement" onchange="applyFilters()"><div class="check-box"></div>Supplements <span class="count">4</span></label>
+          <label class="filter-check"><input type="checkbox" value="bundle" onchange="applyFilters()"><div class="check-box"></div>Bundles & Kits <span class="count">3</span></label>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-group-label" onclick="toggleGroup(this)">
+          Health Goal <span>▾</span>
+        </div>
+        <div class="filter-check-list" id="goalFilters">
+          <label class="filter-check"><input type="checkbox" value="gut" onchange="applyFilters()"><div class="check-box"></div>Gut Health <span class="count">18</span></label>
+          <label class="filter-check"><input type="checkbox" value="diabetes" onchange="applyFilters()"><div class="check-box"></div>Blood Sugar Control <span class="count">14</span></label>
+          <label class="filter-check"><input type="checkbox" value="weight" onchange="applyFilters()"><div class="check-box"></div>Weight Management <span class="count">12</span></label>
+          <label class="filter-check"><input type="checkbox" value="women" onchange="applyFilters()"><div class="check-box"></div>Women's Wellness <span class="count">7</span></label>
+          <label class="filter-check"><input type="checkbox" value="men" onchange="applyFilters()"><div class="check-box"></div>Men's Performance <span class="count">5</span></label>
+          <label class="filter-check"><input type="checkbox" value="immunity" onchange="applyFilters()"><div class="check-box"></div>Immunity Boost <span class="count">9</span></label>
+          <label class="filter-check"><input type="checkbox" value="energy" onchange="applyFilters()"><div class="check-box"></div>Sustained Energy <span class="count">11</span></label>
+          <label class="filter-check"><input type="checkbox" value="kids" onchange="applyFilters()"><div class="check-box"></div>Family & Kids <span class="count">8</span></label>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-group-label" onclick="toggleGroup(this)">
+          Price Range <span>▾</span>
+        </div>
+        <div class="price-range-wrap">
+          <div class="price-inputs">
+            <input class="price-inp" type="number" id="minPrice" placeholder="₦0" value="0" min="0" onchange="applyFilters()"/>
+            <span class="price-sep">— to —</span>
+            <input class="price-inp" type="number" id="maxPrice" placeholder="₦15000" value="15000" max="15000" onchange="applyFilters()"/>
+          </div>
+          <input type="range" class="price-slider" id="priceSlider" min="0" max="15000" value="15000" oninput="document.getElementById('maxPrice').value=this.value;applyFilters()"/>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-group-label" onclick="toggleGroup(this)">
+          Minimum Rating <span>▾</span>
+        </div>
+        <div class="rating-filter">
+          <label class="rating-row"><input type="radio" name="rating" value="0" checked onchange="applyFilters()"> <span class="rating-stars">★★★★★</span> All ratings</label>
+          <label class="rating-row"><input type="radio" name="rating" value="4" onchange="applyFilters()"> <span class="rating-stars">★★★★</span> 4 &amp; above</label>
+          <label class="rating-row"><input type="radio" name="rating" value="4.5" onchange="applyFilters()"> <span class="rating-stars">★★★★★</span> 4.5 &amp; above</label>
+          <label class="rating-row"><input type="radio" name="rating" value="4.8" onchange="applyFilters()"> <span class="rating-stars">★★★★★</span> 4.8 &amp; above</label>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-group-label" onclick="toggleGroup(this)">
+          Dietary <span>▾</span>
+        </div>
+        <div class="filter-check-list">
+          <label class="filter-check"><input type="checkbox" value="gluten-free" onchange="applyFilters()"><div class="check-box"></div>Gluten-Free</label>
+          <label class="filter-check"><input type="checkbox" value="vegan" onchange="applyFilters()"><div class="check-box"></div>Vegan</label>
+          <label class="filter-check"><input type="checkbox" value="diabetic" onchange="applyFilters()"><div class="check-box"></div>Diabetic-Friendly</label>
+          <label class="filter-check"><input type="checkbox" value="low-gi" onchange="applyFilters()"><div class="check-box"></div>Low GI</label>
+          <label class="filter-check"><input type="checkbox" value="high-protein" onchange="applyFilters()"><div class="check-box"></div>High Protein</label>
+        </div>
+      </div>
+    </aside>
+
+    <main class="shop-main">
+      <div class="shop-toolbar">
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+          <button class="filter-toggle" id="filterToggle" onclick="toggleSidebar()">
+            ☰ Filters
+          </button>
+          <p class="results-count"><strong id="resultCount">30</strong> products found</p>
+        </div>
+        <div class="toolbar-right">
+          <div class="search-bar">
+            <span class="icon">🔍</span>
+            <input type="text" placeholder="Search products…" id="searchInput" oninput="applyFilters()" aria-label="Search products"/>
+          </div>
+          <select class="sort-select" id="sortSelect" onchange="applyFilters()" aria-label="Sort products">
+            <option value="featured">Featured</option>
+            <option value="price-asc">Price: Low → High</option>
+            <option value="price-desc">Price: High → Low</option>
+            <option value="rating">Highest Rated</option>
+            <option value="newest">Newest</option>
+            <option value="popular">Most Popular</option>
+          </select>
+          <div class="view-toggle" role="group" aria-label="View mode">
+            <button class="view-btn active" id="gridViewBtn" onclick="setView('grid')" title="Grid view">⊞</button>
+            <button class="view-btn" id="listViewBtn" onclick="setView('list')" title="List view">☰</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="active-filters" id="activeFilters"></div>
+      <div class="products-grid" id="productsGrid"></div>
+
+      <div class="no-results" id="noResults" style="display:none">
+        <div class="icon">🔍</div>
+        <h3>No products found</h3>
+        <p>Try adjusting your filters or search term to find what you're looking for.</p>
+        <button class="checkout-btn" style="max-width:200px;margin:0 auto" onclick="clearAllFilters()">Clear Filters</button>
+      </div>
+
+      <div class="pagination" id="pagination" role="navigation" aria-label="Shop pagination"></div>
+    </main>
+
+  </div>
+</div>
+
+<div class="qv-overlay" id="qvOverlay" onclick="handleQvOverlayClick(event)">
+  <div class="qv-modal" id="qvModal" role="dialog" aria-modal="true" aria-labelledby="qvModalName">
+    <button class="qv-close" onclick="closeQuickView()" aria-label="Close quick view">✕</button>
+    <div class="qv-left" id="qvLeft">
+      <div id="qvBadge"></div>
+      <div class="qv-pack-wrap" id="qvPackWrap"></div>
+      <div class="qv-img-nav" id="qvImgNav">
+        <div class="qv-dot active" onclick="qvDot(this,0)"></div>
+        <div class="qv-dot" onclick="qvDot(this,1)"></div>
+        <div class="qv-dot" onclick="qvDot(this,2)"></div>
+      </div>
+    </div>
+    <div class="qv-right" id="qvRight">
+      <p class="qv-eyebrow" id="qvCategory"></p>
+      <h2 class="qv-name" id="qvModalName"></h2>
+      <div class="qv-rating-row">
+        <span class="qv-stars" id="qvStars"></span>
+        <span class="qv-rating-num" id="qvRatingNum"></span>
+        <span class="qv-reviews" id="qvReviews"></span>
+        <span class="qv-verified">✓ Verified</span>
+      </div>
+      <div class="qv-price-row">
+        <span class="qv-price" id="qvPrice"></span>
+        <span class="qv-old-price" id="qvOldPrice" style="display:none"></span>
+        <span class="qv-save" id="qvSave" style="display:none"></span>
+        <span class="qv-weight" id="qvWeight"></span>
+      </div>
+      <p class="qv-short-desc" id="qvDesc"></p>
+      <div class="qv-tabs" role="tablist">
+        <button class="qv-tab active" role="tab" onclick="qvSwitchTab(this,'benefits')">Benefits</button>
+        <button class="qv-tab" role="tab" onclick="qvSwitchTab(this,'nutrition')">Nutrition</button>
+        <button class="qv-tab" role="tab" onclick="qvSwitchTab(this,'howto')">How to Use</button>
+        <button class="qv-tab" role="tab" onclick="qvSwitchTab(this,'reviews')">Reviews</button>
+      </div>
+      <div class="qv-tab-content active" id="tab-benefits">
+        <div class="qv-benefits" id="qvBenefits"></div>
+      </div>
+      <div class="qv-tab-content" id="tab-nutrition">
+        <div class="qv-nutrition" id="qvNutrition"></div>
+        <p style="font-size:11px;color:var(--gray-300);margin-top:6px">Per 100g serving. Values are approximate.</p>
+      </div>
+      <div class="qv-tab-content" id="tab-howto">
+        <p class="qv-usage" id="qvUsage"></p>
+        <ul class="qv-usage-steps" id="qvUsageSteps"></ul>
+      </div>
+      <div class="qv-tab-content" id="tab-reviews">
+        <div class="qv-review-summary" id="qvReviewSummary"></div>
+        <div id="qvReviewCards"></div>
+      </div>
+      <div class="qv-action-row">
+        <div class="qv-qty">
+          <button class="qv-qty-btn" onclick="changeQvQty(-1)" aria-label="Decrease">−</button>
+          <span class="qv-qty-num" id="qvQtyNum">1</span>
+          <button class="qv-qty-btn" onclick="changeQvQty(1)" aria-label="Increase">+</button>
+        </div>
+        <button class="qv-atc" id="qvAtcBtn" onclick="qvAddToCart()">🛒 Add to Cart</button>
+        <button class="qv-wishlist" id="qvWishlistBtn" onclick="qvToggleWishlist()" aria-label="Add to wishlist">🤍</button>
+      </div>
+      <div class="qv-trust">
+        <div class="qv-trust-item"><span>🔒</span><span>Secured by Paystack</span></div>
+        <div class="qv-trust-item"><span>🚚</span><span>Free delivery ₦15k+</span></div>
+        <div class="qv-trust-item"><span>↩️</span><span>Easy returns</span></div>
+        <div class="qv-trust-item"><span>✅</span><span>Gluten-free certified</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
+  <div class="cart-head">
+    <h2>Your Cart 🛒</h2>
+    <button class="cart-close" onclick="closeCart()" aria-label="Close cart">✕</button>
+  </div>
+  <div class="free-ship-bar">
+    <p id="shipMsg">Add <strong id="shipLeft">₦10,000</strong> more for free delivery!</p>
+    <div class="ship-progress"><div class="ship-fill" id="shipFill" style="width:0%"></div></div>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty">
+      <div class="icon">🛒</div>
+      <h3>Your cart is empty</h3>
+      <p>Add some products to get started on your wellness journey.</p>
+    </div>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-promo">
+      <input class="promo-input" type="text" placeholder="Promo code" id="promoInput"/>
+      <button class="promo-btn" onclick="applyPromo()">Apply</button>
+    </div>
+    <div class="cart-totals" id="cartTotals"></div>
+    <button class="checkout-btn" onclick="checkout()">
+      Secure Checkout
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <p class="secure-note">🔒 Secured by Paystack · Free returns</p>
+  </div>
+</aside>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="leaf-mark" style="width:30px;height:30px"><span style="font-size:13px">🌿</span></div>
+          TMJ Foods
+        </div>
+        <p>Transforming indigenous African grains, nuts, seeds and tubers into functional, nutrient-dense food solutions.</p>
+        <div class="footer-social">
+          <a href="#" class="soc-btn" aria-label="Instagram">📸</a>
+          <a href="#" class="soc-btn" aria-label="Facebook">📘</a>
+          <a href="#" class="soc-btn" aria-label="TikTok">🎵</a>
+          <a href="#" class="soc-btn" aria-label="WhatsApp">💬</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="#">All Products</a></li>
+          <li><a href="#">Flour Blends</a></li>
+          <li><a href="#">Healthy Snacks</a></li>
+          <li><a href="#">Bundles</a></li>
+          <li><a href="#">New Arrivals</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Our Story</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Sustainability</a></li>
+          <li><a href="#">Press</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Track Order</a></li>
+          <li><a href="#">Shipping Policy</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 TMJ Global Resources Ltd. All rights reserved.</span>
+      <div style="display:flex;gap:14px"><a href="#">Privacy</a><a href="#">Terms</a></div>
+      <div class="pay-logos">
+        <span class="pay-logo">🔒 Paystack</span>
+        <span class="pay-logo">VISA</span>
+        <span class="pay-logo">MC</span>
+        <span class="pay-logo">Verve</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/2348000000000" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<div class="toast-stack" id="toastStack"></div>
+
+<script src="js/shop.js"></script>
+</body>
+</html>

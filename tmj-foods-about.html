@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>About Us — TMJ Foods | Our Story, Mission & Values</title>
+<meta name="description" content="Learn the story behind TMJ Foods — how we are transforming indigenous African grains into functional, nutrient-dense food solutions while empowering Nigerian farmers."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/about.css"/>
+</head>
+<body>
+
+<header>
+  <nav class="nav" id="mainNav">
+    <div class="nav-inner">
+      <a href="tmj-foods-homepage.html" class="nav-logo">
+        <div class="leaf-mark"><span>🌿</span></div>
+        TMJ Foods
+      </a>
+      <div class="nav-links">
+        <a href="tmj-foods-homepage.html">Home</a>
+        <a href="tmj-foods-shop.html">Shop</a>
+        <a href="tmj-foods-about.html" class="active">About Us</a>
+        <a href="tmj-foods-contact.html">Contact Us</a>
+      </div>
+      <div class="nav-actions">
+        <a href="tmj-foods-shop.html" class="nav-shop-btn">Shop Now</a>
+        <a href="tmj-foods-shop.html" class="nav-cart-btn" aria-label="Cart">
+          🛒<span class="cart-badge">0</span>
+        </a>
+        <button class="hamburger" onclick="toggleMobileNav()" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="tmj-foods-homepage.html" onclick="toggleMobileNav()">Home</a>
+    <a href="tmj-foods-shop.html" onclick="toggleMobileNav()">Shop</a>
+    <a href="tmj-foods-about.html" onclick="toggleMobileNav()">About Us</a>
+    <a href="tmj-foods-contact.html" onclick="toggleMobileNav()">Contact Us</a>
+  </nav>
+</header>
+
+<section class="hero" aria-labelledby="hero-heading">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-circle" aria-hidden="true"></div>
+  <div class="hero-circle-2" aria-hidden="true"></div>
+  <svg class="hero-leaf-ring" viewBox="0 0 560 560" fill="none" aria-hidden="true">
+    <g>
+      <path d="M280 40 Q300 160 280 280 Q260 160 280 40Z" fill="currentColor"/>
+      <path d="M280 40 Q300 160 280 280 Q260 160 280 40Z" fill="currentColor" transform="rotate(30 280 280)"/>
+      <path d="M280 40 Q300 160 280 280 Q260 160 280 40Z" fill="currentColor" transform="rotate(60 280 280)"/>
+      <path d="M280 40 Q300 160 280 280 Q260 160 280 40Z" fill="currentColor" transform="rotate(90 280 280)"/>
+      <path d="M280 40 Q300 160 280 280 Q260 160 280 40Z" fill="currentColor" transform="rotate(120 280 280)"/>
+      <path d="M280 40 Q300 160 280 280 Q260 160 280 40Z" fill="currentColor" transform="rotate(150 280 280)"/>
+      <path d="M280 40 Q300 160 280 280 Q260 160 280 40Z" fill="currentColor" transform="rotate(180 280 280)"/>
+      <path d="M280 40 Q300 160 280 280 Q260 160 280 40Z" fill="currentColor" transform="rotate(210 280 280)"/>
+      <path d="M280 40 Q300 160 280 280 Q260 160 280 40Z" fill="currentColor" transform="rotate(240 280 280)"/>
+      <path d="M280 40 Q300 160 280 280 Q260 160 280 40Z" fill="currentColor" transform="rotate(270 280 280)"/>
+      <path d="M280 40 Q300 160 280 280 Q260 160 280 40Z" fill="currentColor" transform="rotate(300 280 280)"/>
+      <path d="M280 40 Q300 160 280 280 Q260 160 280 40Z" fill="currentColor" transform="rotate(330 280 280)"/>
+    </g>
+  </svg>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-left">
+        <div class="hero-kicker">Our Story</div>
+        <h1 class="hero-h1" id="hero-heading">
+          Nourishing
+          <span class="line-italic">Africa's Future</span>
+          <span class="line-small">One Grain at a Time</span>
+        </h1>
+        <p class="hero-lede">
+          We are <strong>TMJ Foods</strong> — an agro-allied food brand on a mission to transform indigenous African grains, nuts, seeds, and tubers into <strong>functional, nutrient-dense foods</strong> that serve modern health needs without abandoning our roots.
+        </p>
+        <div class="hero-btns">
+          <a href="#origin" class="btn-primary">
+            Read Our Story
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3v10M3 8l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="tmj-foods-shop.html" class="btn-outline">Explore Products →</a>
+        </div>
+      </div>
+      <div class="hero-right" aria-hidden="true">
+        <svg class="hero-grain-art" viewBox="0 0 200 200" fill="none">
+          <circle cx="100" cy="100" r="80" stroke="var(--forest)" stroke-width="1" stroke-dasharray="8 4"/>
+          <circle cx="100" cy="100" r="55" stroke="var(--forest)" stroke-width=".5" stroke-dasharray="4 6"/>
+          <circle cx="100" cy="100" r="30" fill="var(--forest)" opacity=".3"/>
+          <text x="100" y="106" text-anchor="middle" font-size="18">🌾</text>
+        </svg>
+        <div class="hero-card-main">
+          <span class="card-emoji">🌿</span>
+          <h3>Born in Nigeria,<br>Built for the World</h3>
+          <p>Every product we make starts on a Nigerian farm — sourced directly from smallholder farmers who have grown these ingredients for generations.</p>
+        </div>
+        <div class="hero-stat-pill">
+          <span class="stat-icon">🌾</span>
+          <div class="stat-text">
+            <strong>100%</strong>
+            <span>Nigerian-Grown Ingredients</span>
+          </div>
+        </div>
+        <div class="hero-card-sec">
+          <div class="sec-icon">🏅</div>
+          <h4>Quality You Can Trust</h4>
+          <p>Every batch is lab-tested for nutritional content, microbial safety, and functional performance before it reaches your table.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="tmj-foods-homepage.html">Home</a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">About Us</span>
+  </div>
+</nav>
+
+<section class="impact" aria-label="Impact statistics">
+  <div class="container">
+    <div class="impact-grid">
+      <div class="impact-item reveal">
+        <div class="impact-num"><span class="counter" data-target="30">0</span><span class="accent">+</span></div>
+        <div class="impact-label">Functional Products</div>
+        <div class="impact-sub">Across 6 product categories</div>
+      </div>
+      <div class="impact-item reveal d1">
+        <div class="impact-num"><span class="counter" data-target="2400">0</span><span class="accent">+</span></div>
+        <div class="impact-label">Happy Customers</div>
+        <div class="impact-sub">Nigeria &amp; diaspora worldwide</div>
+      </div>
+      <div class="impact-item reveal d2">
+        <div class="impact-num"><span class="counter" data-target="100">0</span><span class="accent">%</span></div>
+        <div class="impact-label">Gluten-Free</div>
+        <div class="impact-sub">Every single product, always</div>
+      </div>
+      <div class="impact-item reveal d3">
+        <div class="impact-num"><span class="counter" data-target="0">0</span></div>
+        <div class="impact-label">Additives or Preservatives</div>
+        <div class="impact-sub">Pure, clean, whole-food ingredients</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="origin" id="origin" aria-labelledby="origin-heading">
+  <div class="container">
+    <div class="origin-inner">
+      <div class="reveal">
+        <p class="origin-label">How It All Began</p>
+        <h2 class="origin-h2" id="origin-heading">
+          A Problem We<br>Lived <em>Every Day</em>
+        </h2>
+        <p class="origin-body">
+          TMJ Foods was born from a deeply personal observation. <strong>Africa's indigenous grains have fed our people for thousands of years.</strong> Sorghum, plantain, tiger nut, fonio, baobab — these are not exotic superfoods. They are our heritage. They have always been there, growing in our fields, cooked in our kitchens, passed down through generations.
+        </p>
+        <p class="origin-body">
+          Yet somewhere along the way, we began replacing them. Refined wheat flour from imports became the norm. Processed snacks pushed out our local staples. And with that shift came a quiet health crisis — rising rates of diabetes, gut problems, obesity, and deficiency — conditions that were rare in the generations that ate from the land.
+        </p>
+        <div class="origin-pullquote">
+          <p>"We did not set out to start a food company. We set out to answer a question: why are we abandoning the very foods our grandparents used to stay strong and live long?"</p>
+          <cite>— TMJ Foods Founder</cite>
+        </div>
+        <p class="origin-body">
+          The answer we found was not just nutritional — it was economic and cultural. Our local grains were being overlooked because they lacked processing, packaging, and positioning. They were seen as "village food" rather than the <strong>functional superfoods they truly are.</strong>
+        </p>
+        <p class="origin-body">
+          TMJ Foods was built to change that narrative — one product at a time, one customer at a time, one farmer at a time.
+        </p>
+      </div>
+      <div class="origin-visual reveal d2">
+        <div class="origin-img-stack">
+          <div class="origin-img-1">
+            <svg class="field-art" viewBox="0 0 260 340" fill="none" aria-hidden="true">
+              <rect x="0" y="220" width="260" height="120" fill="rgba(255,255,255,0.06)"/>
+              <g stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round">
+                <line x1="60" y1="220" x2="60" y2="80"/>
+                <line x1="90" y1="220" x2="85" y2="60"/>
+                <line x1="120" y1="220" x2="118" y2="50"/>
+                <line x1="150" y1="220" x2="152" y2="65"/>
+                <line x1="180" y1="220" x2="178" y2="75"/>
+                <line x1="210" y1="220" x2="208" y2="85"/>
+              </g>
+              <ellipse cx="60" cy="75" rx="10" ry="22" fill="rgba(232,168,37,0.6)"/>
+              <ellipse cx="85" cy="55" rx="10" ry="22" fill="rgba(232,168,37,0.7)"/>
+              <ellipse cx="118" cy="45" rx="10" ry="22" fill="rgba(232,168,37,0.8)"/>
+              <ellipse cx="152" cy="60" rx="10" ry="22" fill="rgba(232,168,37,0.6)"/>
+              <ellipse cx="178" cy="70" rx="10" ry="22" fill="rgba(232,168,37,0.65)"/>
+              <ellipse cx="208" cy="80" rx="10" ry="22" fill="rgba(232,168,37,0.55)"/>
+              <circle cx="200" cy="60" r="28" fill="rgba(232,168,37,0.15)" stroke="rgba(232,168,37,0.3)" stroke-width="1"/>
+              <circle cx="200" cy="60" r="18" fill="rgba(232,168,37,0.25)"/>
+              <text x="130" y="265" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-weight="700" fill="rgba(255,255,255,0.85)">Farm Sourced</text>
+              <text x="130" y="285" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.5)">100% Nigerian Grown</text>
+            </svg>
+          </div>
+          <div class="origin-overlap-badge" aria-hidden="true">🌱</div>
+          <div class="origin-img-2">
+            <svg class="grain-art" viewBox="0 0 220 280" fill="none" aria-hidden="true">
+              <ellipse cx="110" cy="170" rx="80" ry="20" fill="var(--sand)" opacity=".7"/>
+              <path d="M30 145 Q30 200 110 210 Q190 200 190 145Z" fill="var(--parchment)"/>
+              <ellipse cx="110" cy="145" rx="65" ry="30" fill="var(--amber)" opacity=".6"/>
+              <ellipse cx="110" cy="138" rx="55" ry="22" fill="var(--amber)" opacity=".5"/>
+              <ellipse cx="110" cy="132" rx="42" ry="16" fill="var(--gold)" opacity=".6"/>
+              <circle cx="85" cy="135" r="4" fill="var(--bark)" opacity=".4"/>
+              <circle cx="98" cy="128" r="3" fill="var(--bark)" opacity=".4"/>
+              <circle cx="115" cy="130" r="4" fill="var(--bark)" opacity=".4"/>
+              <circle cx="130" cy="135" r="3" fill="var(--bark)" opacity=".4"/>
+              <circle cx="120" cy="142" r="4" fill="var(--bark)" opacity=".35"/>
+              <path d="M155 80 Q170 100 162 140" stroke="var(--gray-400)" stroke-width="3" stroke-linecap="round" fill="none"/>
+              <ellipse cx="163" cy="76" rx="10" ry="14" fill="var(--gray-300)"/>
+              <text x="110" y="232" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="700" fill="var(--gray-700)">Clean Processed</text>
+              <text x="110" y="250" text-anchor="middle" font-size="10" fill="var(--gray-400)">No Additives · No Preservatives</text>
+            </svg>
+          </div>
+          <div class="origin-img-label">
+            <span class="icon">📅</span>
+            <div class="text">
+              <strong>Founded 2022</strong>
+              <span>Lagos, Nigeria</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mvv" aria-labelledby="mvv-heading">
+  <div class="container">
+    <div class="mvv-header reveal">
+      <p class="label">What Drives Us</p>
+      <h2 id="mvv-heading">Mission, Vision &amp; <em>Core Values</em></h2>
+    </div>
+    <div class="mvv-grid">
+      <div class="mvv-card mission reveal d1">
+        <div class="mvv-icon">🎯</div>
+        <h3>Our Mission</h3>
+        <p>To bridge the gap between traditional African nutrition and contemporary health needs — transforming indigenous grains, nuts, seeds and tubers into accessible, functional foods that empower people to take control of their wellbeing without losing connection to their culture.</p>
+      </div>
+      <div class="mvv-card vision reveal d2">
+        <div class="mvv-icon">🌍</div>
+        <h3>Our Vision</h3>
+        <p>To become Africa's most trusted functional food brand — a household name that proves indigenous ingredients are not just good food, but some of the most powerful healing, nourishing, and performance-enhancing foods in the world.</p>
+      </div>
+      <div class="mvv-card values reveal d3">
+        <div class="mvv-icon">⚖️</div>
+        <h3>Our Values</h3>
+        <div class="values-list">
+          <div class="value-item"><div class="value-dot">1</div>Wellness — food that genuinely heals and nourishes</div>
+          <div class="value-item"><div class="value-dot">2</div>Authenticity — rooted in African heritage and food science</div>
+          <div class="value-item"><div class="value-dot">3</div>Transparency — clean labels, honest ingredients, no hidden fillers</div>
+          <div class="value-item"><div class="value-dot">4</div>Community — farmers, customers, and team all win together</div>
+          <div class="value-item"><div class="value-dot">5</div>Innovation — marrying tradition with modern food science</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process" aria-labelledby="process-heading">
+  <div class="container">
+    <div class="process-header reveal">
+      <p class="label">How We Work</p>
+      <h2 id="process-heading">From Seed to <em>Your Table</em></h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-item odd reveal">
+        <div class="tl-content tl-left">
+          <div class="step-label">Step 01</div>
+          <h3>Farmer Partnerships</h3>
+          <p>We partner directly with smallholder farmers across Nigeria — sorghum growers in the North, plantain farmers in the South West, and sweet potato growers in the Middle Belt. We pay fair prices and provide guidance on best practices.</p>
+        </div>
+        <div class="tl-dot-wrap"><div class="tl-dot">🌱</div></div>
+        <div class="tl-empty"></div>
+      </div>
+      <div class="tl-item even reveal">
+        <div class="tl-empty"></div>
+        <div class="tl-dot-wrap"><div class="tl-dot">🔬</div></div>
+        <div class="tl-content tl-right">
+          <div class="step-label">Step 02</div>
+          <h3>Raw Material Quality Check</h3>
+          <p>Every incoming batch of raw grain is inspected for moisture content, foreign matter, and visual quality. Only grains that meet our specification move forward to processing.</p>
+        </div>
+      </div>
+      <div class="tl-item odd reveal">
+        <div class="tl-content tl-left">
+          <div class="step-label">Step 03</div>
+          <h3>Clean Processing</h3>
+          <p>Grains are cleaned, sorted, dried to precise moisture levels, and milled in a hygienic environment. We use no bleaching agents, no chemical treatment, and no artificial drying methods.</p>
+        </div>
+        <div class="tl-dot-wrap"><div class="tl-dot">⚙️</div></div>
+        <div class="tl-empty"></div>
+      </div>
+      <div class="tl-item even reveal">
+        <div class="tl-empty"></div>
+        <div class="tl-dot-wrap"><div class="tl-dot">🧪</div></div>
+        <div class="tl-content tl-right">
+          <div class="step-label">Step 04</div>
+          <h3>Lab Testing &amp; Formulation</h3>
+          <p>Each batch is tested for nutritional profile, microbial safety, and functional performance. Blended products like SORPLA FemmeGrain and AlphaGrain are formulated with specific health outcomes in mind.</p>
+        </div>
+      </div>
+      <div class="tl-item odd reveal">
+        <div class="tl-content tl-left">
+          <div class="step-label">Step 05</div>
+          <h3>Packaging &amp; Sealing</h3>
+          <p>Products are packaged in food-grade, resealable pouches that protect against moisture and contamination. Every pack is labelled with full ingredient lists, nutritional information, and a batch code for traceability.</p>
+        </div>
+        <div class="tl-dot-wrap"><div class="tl-dot">📦</div></div>
+        <div class="tl-empty"></div>
+      </div>
+      <div class="tl-item even reveal">
+        <div class="tl-empty"></div>
+        <div class="tl-dot-wrap"><div class="tl-dot">🚚</div></div>
+        <div class="tl-content tl-right">
+          <div class="step-label">Step 06</div>
+          <h3>Delivery to Your Door</h3>
+          <p>Orders ship nationwide across all 36 Nigerian states and internationally to the UK, USA, Canada, and Europe. We partner with trusted logistics providers to ensure your order arrives fresh and on time.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="farmers" aria-labelledby="farmers-heading">
+  <div class="container">
+    <div class="farmers-inner">
+      <div class="reveal">
+        <p class="farmers-label">Community at the Core</p>
+        <h2 class="farmers-h2" id="farmers-heading">
+          The Farmers Who<br>Make It All <em>Possible</em>
+        </h2>
+        <p class="farmers-body">
+          Behind every bag of TMJ Foods flour is a smallholder farmer — a man or woman who wakes up before dawn, tends their field by hand, and has been farming the same land their parents farmed. These are the people who make everything we do possible.
+        </p>
+        <p class="farmers-body">
+          We believe that a food brand that does not take care of its farmers will eventually have nothing worth selling. So we have structured our supply chain to put farmers first.
+        </p>
+        <div class="farmers-pledges">
+          <div class="pledge-item">
+            <div class="pledge-icon">💰</div>
+            <div class="pledge-text">
+              <h4>Fair Pricing, Always</h4>
+              <p>We pay above-market rates for quality grain and never renegotiate after harvest — farmers know exactly what they will earn.</p>
+            </div>
+          </div>
+          <div class="pledge-item">
+            <div class="pledge-icon">📚</div>
+            <div class="pledge-text">
+              <h4>Training &amp; Support</h4>
+              <p>We provide free guidance on post-harvest handling, storage, and quality standards to help farmers grow better crops.</p>
+            </div>
+          </div>
+          <div class="pledge-item">
+            <div class="pledge-icon">🤝</div>
+            <div class="pledge-text">
+              <h4>Long-Term Relationships</h4>
+              <p>We commit to multi-season purchase agreements so farmers can plan, invest, and build their own livelihoods with confidence.</p>
+            </div>
+          </div>
+          <div class="pledge-item">
+            <div class="pledge-icon">📍</div>
+            <div class="pledge-text">
+              <h4>Full Traceability</h4>
+              <p>Every batch carries a code traceable back to the farm it came from. Customers who want to know can know.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal d2">
+        <div class="farmers-stats">
+          <div class="farm-stat-card highlight">
+            <span class="farm-stat-icon">👨‍🌾</span>
+            <div>
+              <div class="farm-stat-num amber">50<span style="font-size:28px">+</span></div>
+              <div class="farm-stat-lbl">Smallholder farmers currently in our network, across 6 states in Nigeria</div>
+            </div>
+          </div>
+          <div class="farm-stat-card">
+            <div class="farm-stat-num">6</div>
+            <div class="farm-stat-lbl">States Sourced From</div>
+          </div>
+          <div class="farm-stat-card">
+            <div class="farm-stat-num amber">₦</div>
+            <div class="farm-stat-lbl">Fair Prices Paid — Always Above Market Rate</div>
+          </div>
+          <div class="farm-stat-card">
+            <div class="farm-stat-num">100%</div>
+            <div class="farm-stat-lbl">Nigerian Raw Ingredients in Every Product</div>
+          </div>
+          <div class="farm-stat-card">
+            <div class="farm-stat-num">0</div>
+            <div class="farm-stat-lbl">Imported Raw Materials — Ever</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item"><span class="marquee-sep"></span>Gut Health</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>Blood Sugar Control</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>100% Gluten-Free</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>African Heritage</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>Smallholder Farmers</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>No Additives</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>Hormone Balance</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>Sustained Energy</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>Immunity Boost</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>Functional Nutrition</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>Export Ready</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>Gut Health</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>Blood Sugar Control</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>100% Gluten-Free</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>African Heritage</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>Smallholder Farmers</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>No Additives</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>Hormone Balance</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>Sustained Energy</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>Immunity Boost</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>Functional Nutrition</span>
+    <span class="marquee-item"><span class="marquee-sep"></span>Export Ready</span>
+  </div>
+</div>
+
+<section class="team" aria-labelledby="team-heading">
+  <div class="container">
+    <div class="team-header reveal">
+      <p class="label">The People Behind TMJ Foods</p>
+      <h2 id="team-heading">Meet the <em>Team</em></h2>
+      <p>A passionate group of food scientists, nutritionists, agronomists, and purpose-driven entrepreneurs — united by a belief that Africa's grains deserve a place on every table.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card reveal d1">
+        <div class="team-avatar" style="background:linear-gradient(140deg,#1A5C34,#2D7A4F)">👩🏾‍💼</div>
+        <div class="team-info">
+          <h3>Temitope M. Johnson</h3>
+          <div class="role">Founder &amp; CEO</div>
+          <p>Food scientist and entrepreneur with a passion for African heritage foods. 10+ years in food processing and functional nutrition. Visionary behind every TMJ Foods product.</p>
+          <div class="team-social">
+            <a href="#" class="t-soc" aria-label="LinkedIn">💼</a>
+            <a href="#" class="t-soc" aria-label="Twitter">🐦</a>
+            <a href="#" class="t-soc" aria-label="Instagram">📸</a>
+          </div>
+        </div>
+      </div>
+      <div class="team-card reveal d2">
+        <div class="team-avatar" style="background:linear-gradient(140deg,#C8891A,#E8A825)">👨🏾‍🔬</div>
+        <div class="team-info">
+          <h3>Dr. Adebayo Okonkwo</h3>
+          <div class="role">Head of Food Science</div>
+          <p>PhD in Food Technology from University of Ibadan. Leads formulation, lab testing, and nutritional profiling for all TMJ Foods products. Ensures every claim we make is backed by science.</p>
+          <div class="team-social">
+            <a href="#" class="t-soc" aria-label="LinkedIn">💼</a>
+            <a href="#" class="t-soc" aria-label="Research">🔬</a>
+          </div>
+        </div>
+      </div>
+      <div class="team-card reveal d3">
+        <div class="team-avatar" style="background:linear-gradient(140deg,#7A5230,#4A2E12)">👩🏾‍🌾</div>
+        <div class="team-info">
+          <h3>Mrs. Ngozi Eze</h3>
+          <div class="role">Head of Farmer Relations</div>
+          <p>Agronomist with 15 years of working with smallholder farmers across Nigeria. Manages our farmer partnership network and ensures every raw material meets our quality standards.</p>
+          <div class="team-social">
+            <a href="#" class="t-soc" aria-label="LinkedIn">💼</a>
+          </div>
+        </div>
+      </div>
+      <div class="team-card reveal d1">
+        <div class="team-avatar" style="background:linear-gradient(140deg,#1A3A7B,#2D5AB0)">👨🏾‍💻</div>
+        <div class="team-info">
+          <h3>Emeka Chukwu</h3>
+          <div class="role">Head of Operations &amp; Logistics</div>
+          <p>Supply chain expert who ensures products get from our processing facility to customers across Nigeria and internationally — on time, every time.</p>
+          <div class="team-social">
+            <a href="#" class="t-soc" aria-label="LinkedIn">💼</a>
+            <a href="#" class="t-soc" aria-label="Twitter">🐦</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="awards" aria-labelledby="awards-heading">
+  <div class="container">
+    <div class="awards-header reveal">
+      <p class="label">Recognition</p>
+      <h2 id="awards-heading">Awards &amp; <em>Certifications</em></h2>
+    </div>
+    <div class="awards-grid">
+      <div class="award-card reveal d1">
+        <div class="award-icon">🏆</div>
+        <h4>Best Agri-Food Startup</h4>
+        <p>Lagos State Entrepreneurship Awards — recognising innovation in agricultural value chains</p>
+        <span class="award-year">2024</span>
+      </div>
+      <div class="award-card reveal d2">
+        <div class="award-icon">🌿</div>
+        <h4>NAFDAC Registered</h4>
+        <p>All TMJ Foods products are registered with Nigeria's National Agency for Food and Drug Administration</p>
+        <span class="award-year">Active</span>
+      </div>
+      <div class="award-card reveal d3">
+        <div class="award-icon">🔬</div>
+        <h4>Lab Certified</h4>
+        <p>Third-party laboratory certification for nutritional claims, microbial safety, and gluten-free status</p>
+        <span class="award-year">Every Batch</span>
+      </div>
+      <div class="award-card reveal d1">
+        <div class="award-icon">🌍</div>
+        <h4>ECOWAS Export Certified</h4>
+        <p>Certified for export across ECOWAS member states — building the foundation for continental distribution</p>
+        <span class="award-year">2024</span>
+      </div>
+      <div class="award-card reveal d2">
+        <div class="award-icon">💚</div>
+        <h4>Sustainability Pledge</h4>
+        <p>Signatory to the Nigeria Sustainable Food Systems pledge — committed to zero-waste processing by 2026</p>
+        <span class="award-year">Ongoing</span>
+      </div>
+      <div class="award-card reveal d3">
+        <div class="award-icon">🤝</div>
+        <h4>BoI SME Financed</h4>
+        <p>Supported by Bank of Industry's SME intervention fund for agro-processing businesses</p>
+        <span class="award-year">2023</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sustain" aria-labelledby="sustain-heading">
+  <div class="container">
+    <div class="sustain-inner">
+      <div class="reveal">
+        <p class="sustain-label">Our Commitment</p>
+        <h2 class="sustain-h2" id="sustain-heading">
+          Nourishing People<br>Without <em>Harming the Planet</em>
+        </h2>
+        <p class="sustain-body">
+          We believe that the way food is made matters just as much as what the food contains. TMJ Foods is built on a commitment to sustainable practices that protect the environment, support communities, and leave the land better than we found it.
+        </p>
+        <div class="sustain-pillars">
+          <div class="pillar reveal d1">
+            <div class="p-icon">♻️</div>
+            <h4>Zero Waste Processing</h4>
+            <p>Grain husks and processing by-products are repurposed as animal feed or compost — nothing goes to landfill.</p>
+          </div>
+          <div class="pillar reveal d2">
+            <div class="p-icon">🌊</div>
+            <h4>Water Stewardship</h4>
+            <p>Closed-loop water use in our facility reduces consumption by 60% compared to conventional food processing.</p>
+          </div>
+          <div class="pillar reveal d3">
+            <div class="p-icon">📦</div>
+            <h4>Eco Packaging</h4>
+            <p>Our packaging is recyclable and sourced from FSC-certified materials. We are transitioning to compostable pouches by 2026.</p>
+          </div>
+          <div class="pillar reveal d4">
+            <div class="p-icon">🌞</div>
+            <h4>Clean Energy</h4>
+            <p>30% of our facility's energy currently comes from solar. We aim for 80% renewable by the end of 2026.</p>
+          </div>
+        </div>
+      </div>
+      <div class="sustain-visual reveal d2">
+        <div class="sustain-big-card">
+          <span class="big-emoji">🌍</span>
+          <h3>Our 2026 Sustainability Goals</h3>
+          <p>We have set ambitious targets to make TMJ Foods one of Nigeria's most sustainable food producers — because nourishing people and protecting the planet are not competing goals.</p>
+          <div class="sustain-progress">
+            <div class="sp-row"><span>Renewable Energy</span><span>30% → 80%</span></div>
+            <div class="sp-bar"><div class="sp-fill" style="width:30%"></div></div>
+            <div class="sp-row"><span>Zero Waste Processing</span><span>65% → 100%</span></div>
+            <div class="sp-bar"><div class="sp-fill" style="width:65%"></div></div>
+            <div class="sp-row"><span>Compostable Packaging</span><span>10% → 100%</span></div>
+            <div class="sp-bar"><div class="sp-fill" style="width:10%"></div></div>
+            <div class="sp-row"><span>Farmer Network Growth</span><span>50 → 200 farmers</span></div>
+            <div class="sp-bar"><div class="sp-fill" style="width:25%"></div></div>
+          </div>
+        </div>
+        <div class="sustain-floating">
+          <span class="sf-icon">🌱</span>
+          <div>
+            <strong>Planting Back</strong>
+            <span>1 tree planted per 50 orders</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" aria-labelledby="cta-heading">
+  <div class="container" style="position:relative;z-index:1">
+    <p class="label">Ready to Start?</p>
+    <h2 id="cta-heading">
+      Taste the Difference<br><em>Real Food Makes</em>
+    </h2>
+    <p>Join 2,400+ customers who have made the switch to clean, functional, African-grown nutrition. Your first order ships in 24 hours.</p>
+    <div class="cta-btns">
+      <a href="tmj-foods-shop.html" class="btn-amber">
+        Shop All Products
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#" class="btn-ghost-white">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="leaf-mark" style="width:30px;height:30px"><span style="font-size:13px">🌿</span></div>
+          TMJ Foods
+        </div>
+        <p>Transforming indigenous African grains, nuts, seeds and tubers into functional, nutrient-dense food solutions for modern lifestyles.</p>
+        <div class="footer-social">
+          <a href="#" class="soc-btn" aria-label="Instagram">📸</a>
+          <a href="#" class="soc-btn" aria-label="Facebook">📘</a>
+          <a href="#" class="soc-btn" aria-label="TikTok">🎵</a>
+          <a href="#" class="soc-btn" aria-label="WhatsApp">💬</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="tmj-foods-shop.html">All Products</a></li>
+          <li><a href="#">Flour Blends</a></li>
+          <li><a href="#">Healthy Snacks</a></li>
+          <li><a href="#">Bundles</a></li>
+          <li><a href="#">New Arrivals</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Our Story</a></li>
+          <li><a href="#">Farmer Partners</a></li>
+          <li><a href="#">Sustainability</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Track Order</a></li>
+          <li><a href="#">Shipping Policy</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 TMJ Global Resources Ltd. All rights reserved.</span>
+      <div style="display:flex;gap:14px"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></div>
+      <div class="pay-logos">
+        <span class="pay-logo">🔒 Paystack</span>
+        <span class="pay-logo">VISA</span>
+        <span class="pay-logo">MC</span>
+        <span class="pay-logo">Verve</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/2348000000000" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script src="js/about.js"></script>
+</body>
+</html>
