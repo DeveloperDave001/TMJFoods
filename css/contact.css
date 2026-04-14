@@ -407,15 +407,14 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 }
 .map-pin{
   width:60px;height:60px;
-  background:var(--forest);
-  border-radius:50% 50% 50% 0;
-  transform:rotate(-45deg);
+  background:#F5F2EC;
+  border-radius:50%;
   display:flex;align-items:center;justify-content:center;
   position:relative;z-index:1;
-  box-shadow:0 6px 20px rgba(26,92,52,.3);
+  box-shadow:0 4px 16px rgba(0,0,0,.12);
   animation:float 4s ease-in-out infinite;
 }
-.map-pin span{transform:rotate(45deg);font-size:22px}
+.map-pin img{transform:none;border-radius:50%;width:36px;height:36px;object-fit:contain;}
 .map-placeholder h4{font-family:var(--font-heading);font-size:20px;font-weight:700;color:var(--gray-700);position:relative;z-index:1}
 .map-placeholder p{font-size:13px;color:var(--gray-400);position:relative;z-index:1;max-width:280px}
 .map-note{font-size:11px;color:var(--gray-300);position:relative;z-index:1;margin-top:4px}

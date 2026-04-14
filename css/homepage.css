@@ -556,7 +556,7 @@ body::before{
 }
 .about-floating-badge{
   position:absolute;
-  bottom:-20px;right:24px;
+  bottom:20px;right:24px;
   background:#fff;
   border-radius:16px;
   padding:16px 20px;
