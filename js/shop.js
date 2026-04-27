@@ -1,11 +1,13 @@
 const productImages = ['p1.png','p2.png','p3.png','p4.png','p5.png','p6.png'];
 const getProductImage = (id) => productImages[(id - 1) % 6];
-const PRODUCTS = [
+
+const PRODUCT_STORAGE_KEY = 'tmj_products';
+const DEFAULT_PRODUCTS = [
   {id:1,name:"Sorghum–Plantain Flour",short:"Classic blend for blood sugar control & gut health",price:3500,oldPrice:null,weight:"1kg",category:"flour",goals:["gut","diabetes","weight","energy"],tags:["Gluten-Free","Low GI","Gut Health"],badge:"best",emoji:"🌾",bg:"#E8F5EE",packBg:"#1A5C34",packTop:"#0F3D22",rating:4.9,reviews:142,featured:true,newest:false},
   {id:2,name:"Unripe Plantain Flour",short:"Resistant starch prebiotic — feeds good gut bacteria",price:3200,oldPrice:null,weight:"1kg",category:"flour",goals:["gut","diabetes","weight","immunity"],tags:["Prebiotic","Low GI","Diabetic"],badge:null,emoji:"🍌",bg:"#FFFBEA",packBg:"#FFFFFF",packTop:"#2D7A4F",packBorder:true,rating:4.8,reviews:98,featured:true,newest:false},
   {id:3,name:"SORPLA FemmeGrain",short:"Hormonal balance, gut health & iron for women",price:3800,oldPrice:null,weight:"1kg",category:"flour",goals:["gut","women","weight","immunity","energy"],tags:["Women's Health","Hormone Balance"],badge:"women",emoji:"🌸",bg:"#FDF0F8",packBg:"#B05090",packTop:"#7B2D6E",rating:5.0,reviews:76,featured:true,newest:false},
   {id:4,name:"SORPLA AlphaGrain",short:"High-protein performance blend for strength & focus",price:4000,oldPrice:null,weight:"1kg",category:"flour",goals:["gut","men","energy","weight"],tags:["Men's Performance","High Protein"],badge:"men",emoji:"💪",bg:"#EAF0FB",packBg:"#1A3A7B",packTop:"#0F2456",rating:4.9,reviews:53,featured:true,newest:false},
-  {id:5,name:"OrangeKind™ OFSP",short:"Orange sweet potato flour — beta-carotene & Vitamin A",price:2800,oldPrice:null,weight:"850g",category:"flour",goals:["gut","immunity","energy","kids"],tags:["Vitamin A","Immunity","Beta-Carotene"],badge:null,emoji:"🍠",bg:"#FFF3E8",packBg:"#D45C10",packTop:"#9A3A08",rating:4.7,reviews:41,featured:true,newest:false},
+  {id:5,name:"OrangeKind™ OFSP",short:"Orange sweet potato flour — beta-carotene & Vitamin A",price:2800,oldPrice:null,weight:"850g",category:"flour",goals:["gut","immunity","energy","kids"],tags:["Vitamin A","Immunity","Beta-Carotene"],badge:null,emoji:"����",bg:"#FFF3E8",packBg:"#D45C10",packTop:"#9A3A08",rating:4.7,reviews:41,featured:true,newest:false},
   {id:6,name:"Tapioca Flakes",short:"Gentle, gluten-free cassava starch — family-friendly",price:1800,oldPrice:null,weight:"500g",category:"cereal",goals:["gut","kids","energy"],tags:["Gluten-Free","Easy Digest","Family"],badge:null,emoji:"🫙",bg:"#F0F8F4",packBg:"#F5F0E8",packTop:"#4A9E6B",packBorder:true,rating:4.8,reviews:88,featured:true,newest:false},
   {id:7,name:"Sorghum Porridge Mix",short:"Warm, creamy breakfast porridge — slow energy release",price:2600,oldPrice:3000,weight:"800g",category:"cereal",goals:["gut","diabetes","energy","kids"],tags:["Low GI","Breakfast","Gluten-Free"],badge:"sale",emoji:"🥣",bg:"#FFF7ED",packBg:"#4A9E6B",packTop:"#2D7A4F",rating:4.7,reviews:65,featured:false,newest:false},
   {id:8,name:"Sorghum Flatbread Mix",short:"Ready-mix for soft, low-GI flatbread in minutes",price:2900,oldPrice:null,weight:"700g",category:"flour",goals:["diabetes","gut","energy"],tags:["Low GI","Flatbread","Gluten-Free"],badge:null,emoji:"🫓",bg:"#FAF0E0",packBg:"#7A5230",packTop:"#4A2E12",rating:4.6,reviews:34,featured:false,newest:true},
@@ -32,6 +34,59 @@ const PRODUCTS = [
   {id:29,name:"Cacao-Sorghum Blend",short:"Dark cacao + sorghum — antioxidant mood booster",price:3900,oldPrice:null,weight:"500g",category:"flour",goals:["gut","energy","immunity","women"],tags:["Cacao","Antioxidant","Mood"],badge:"new",emoji:"🍫",bg:"#F5EBE8",packBg:"#3D1A0A",packTop:"#220E05",rating:4.8,reviews:23,featured:false,newest:true},
   {id:30,name:"Turmeric Grain Boost",short:"Sorghum + turmeric + ginger — anti-inflammatory power",price:3700,oldPrice:null,weight:"600g",category:"supplement",goals:["immunity","gut","energy","men"],tags:["Anti-Inflammatory","Turmeric","Ginger"],badge:null,emoji:"🟡",bg:"#FFFBEA",packBg:"#C89010",packTop:"#8A5E08",rating:4.7,reviews:35,featured:false,newest:false},
 ];
+
+function validateProduct(p) {
+  if (!p) return false;
+  if (!p.name || typeof p.name !== 'string') return false;
+  if (typeof p.price !== 'number' || p.price <= 0) return false;
+  if (!p.category) return false;
+  if (!Array.isArray(p.goals) || p.goals.length === 0) return false;
+  return true;
+}
+
+function getStoredProducts() {
+  console.log('=== getStoredProducts called ===');
+  try {
+    const stored = localStorage.getItem(PRODUCT_STORAGE_KEY);
+    console.log('localStorage key exists:', !!stored);
+    if (!stored) {
+      console.log('No stored data');
+      return null;
+    }
+    
+    const parsed = JSON.parse(stored);
+    console.log('Parsed data type:', Array.isArray(parsed) ? 'array' : typeof parsed);
+    console.log('Products count:', parsed ? parsed.length : 0);
+    
+    if (!Array.isArray(parsed)) {
+      console.log('Not an array, returning null');
+      return null;
+    }
+    
+    if (parsed.length === 0) {
+      console.log('Empty array, returning null');
+      return null;
+    }
+    
+    // Log first product details
+    if (parsed[0]) {
+      console.log('First product:', parsed[0].name, 'price:', parsed[0].price, 'category:', parsed[0].category, 'goals:', parsed[0].goals);
+    }
+    
+    return parsed;
+  } catch (e) {
+    console.error('Error:', e);
+    return null;
+  }
+}
+
+let PRODUCTS = getStoredProducts();
+if (!PRODUCTS) {
+  console.log('Using DEFAULT_PRODUCTS - getStoredProducts returned null');
+  PRODUCTS = DEFAULT_PRODUCTS;
+} else {
+  console.log('Using stored products:', PRODUCTS.length);
+}
 
 function renderPack(p) {
   const border = p.packBorder ? `stroke="${p.packBg === '#FFFFFF' ? '#D8D4C8' : p.packBg}" stroke-width="1.5"` : '';
@@ -92,6 +147,9 @@ function addToCart(id, btnEl){
   if(btnEl){btnEl.classList.add('adding');setTimeout(()=>btnEl.classList.remove('adding'),300)}
   showToast(`✓ ${p.name} added to cart`,'success');
 }
+
+/* Expose addToCart globally for homepage integration */
+window.addToCartShop = addToCart;
 
 function removeFromCart(id){
   cart = cart.filter(x=>x.id!==id);
@@ -176,10 +234,55 @@ function applyPromo(){
   else{showToast('Invalid promo code','error')}
 }
 
+const STORAGE_KEYS = {
+  ORDERS: 'tmj_orders',
+  PRODUCTS: 'tmj_products'
+};
+
+function createOrder(customer) {
+  const orders = JSON.parse(localStorage.getItem(STORAGE_KEYS.ORDERS)) || [];
+  const subtotal = cartTotal();
+  const delivery = subtotal >= 15000 ? 0 : 1500;
+  
+  const order = {
+    id: Date.now().toString().slice(-6),
+    date: new Date().toISOString(),
+    customer: customer,
+    items: cart.map(item => ({...item})),
+    subtotal: subtotal,
+    delivery: delivery,
+    total: subtotal + delivery,
+    status: 'pending'
+  };
+  
+  orders.push(order);
+  localStorage.setItem(STORAGE_KEYS.ORDERS, JSON.stringify(orders));
+  return order;
+}
+
 function checkout(){
   if(cart.length===0){showToast('Your cart is empty!','error');return}
-  showToast('Redirecting to checkout…','info');
-  setTimeout(()=>window.location.href='#checkout',1500);
+  
+  const customer = {
+    name: prompt('Enter your name:') || 'Customer',
+    email: prompt('Enter your email:') || 'customer@email.com',
+    phone: prompt('Enter your phone:') || '0000000000',
+    address: prompt('Enter your delivery address:') || 'Not provided'
+  };
+  
+  if(!customer.name || !customer.email){showToast('Please provide name and email','error');return}
+  
+  createOrder(customer);
+  
+  const subtotal = cartTotal();
+  const delivery = subtotal >= 15000 ? 0 : 1500;
+  const total = subtotal + delivery;
+  
+  showToast(`Order #${Date.now().toString().slice(-6)} placed! Total: ₦${total.toLocaleString()}`,'success');
+  cart = [];
+  updateCartBadge();
+  renderCartItems();
+  closeCart();
 }
 
 let currentPage = 1;
