@@ -106,5 +106,46 @@
 
   <script src="js/track-order.js"></script>
   <script src="js/shop.js"></script>
+  <script src="js/faq-bot.js"></script>
+  <link rel="stylesheet" href="css/faq-bot.css">
+
+  <!-- FAQ Bot -->
+  <div class="faq-bot-float">
+    <div class="faq-bot-window" id="faqBotWindow">
+      <div class="faq-bot-header">
+        <div class="bot-avatar">🤖</div>
+        <div class="bot-info">
+          <h4>TMJ FAQ Bot</h4>
+          <p>Quick answers to common questions</p>
+        </div>
+      </div>
+      <div class="faq-bot-search">
+        <input type="text" id="faqBotSearch" placeholder="Search questions..." oninput="filterFaq()">
+      </div>
+      <div class="faq-bot-list" id="faqBotList"></div>
+      <div class="faq-bot-footer">
+        <a href="#" onclick="openWhatsApp();return false;">Still need help? Chat on WhatsApp →</a>
+      </div>
+    </div>
+    <button class="faq-bot-toggle" id="faqBotToggle" onclick="toggleFaqBot()" aria-label="Open FAQ bot">
+      <span class="faq-open">🤖</span>
+      <span class="faq-close">✕</span>
+    </button>
+  </div>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function(){
+    const list = document.getElementById('faqBotList');
+    faqData.forEach((item, i) => {
+      const div = document.createElement('div');
+      div.className = 'faq-bot-item';
+      div.setAttribute('data-q', item.q);
+      div.innerHTML = '<div class="q">'+item.q+'</div><div class="a">'+item.a+'</div>';
+      div.onclick = function(){ toggleFaqItem(this); };
+      list.appendChild(div);
+    });
+  });
+  </script>
+
 </body>
 </html>
