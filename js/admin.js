@@ -587,6 +587,8 @@ function renderOrders() {
       <td>${new Date(o.date).toLocaleDateString()}</td>
       <td class="customer-name">${o.customer.name}<br><small style="color:var(--gray-400)">${o.customer.email}</small></td>
       <td class="items-count">${o.items.length} item${o.items.length > 1 ? 's' : ''}</td>
+      <td class="qty">${o.items.reduce((sum, item) => sum + item.qty, 0)}</td>
+      <td class="price">${o.items.every((item, _, arr) => item.price === arr[0].price) ? '₦' + o.items[0].price.toLocaleString() : 'Varies'}</td>
       <td class="order-total">₦${o.total.toLocaleString()}</td>
       <td><span class="status-badge status-${o.status}" onclick="cycleStatus(${o.id})">${o.status}</span></td>
       <td class="action-btns">
