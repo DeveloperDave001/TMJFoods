@@ -28,6 +28,7 @@
         <a href="tmj-foods-shop.html" role="listitem">Shop</a>
         <a href="tmj-foods-about.html" role="listitem">About Us</a>
         <a href="tmj-foods-contact.html" role="listitem">Contact Us</a>
+        <a href="tmj-foods-track-order.html" role="listitem">View My Orders</a>
       </div>
       <div class="nav-actions">
         <a href="tmj-foods-shop.html" class="nav-shop-btn">Shop Now</a>
@@ -48,6 +49,7 @@
     <a href="tmj-foods-shop.html" onclick="toggleMenu()">Shop</a>
     <a href="tmj-foods-about.html" onclick="toggleMenu()">About Us</a>
     <a href="tmj-foods-contact.html" onclick="toggleMenu()">Contact Us</a>
+    <a href="tmj-foods-track-order.html" onclick="toggleMenu()">View My Orders</a>
   </nav>
 </header>
 
@@ -65,10 +67,9 @@
     <div class="hero-eyebrow" aria-label="Tagline">
       Powered by African Grains
     </div>
-    <h1 class="hero-h1">
-      Real Food,<br>
-      <em>Rooted in</em><span class="strike">Tradition</span>
-    </h1>
+<h1 class="hero-h1">
+   Real & Healthy Food; <br><em>Food as a Medicine</em>
+</h1>
     <p class="hero-sub">
       We transform <strong>indigenous African grains, nuts, seeds and tubers</strong> into functional, nutrient-dense foods your body actually needs — free from gluten, additives, and compromise.
     </p>
@@ -83,10 +84,10 @@
     </div>
     <div class="hero-trust" aria-label="Customer trust indicators">
       <div class="hero-trust-avatars" aria-hidden="true">
-        <span title="Customer">A</span>
-        <span title="Customer">B</span>
-        <span title="Customer">C</span>
-        <span title="Customer">D</span>
+        <img src="customer1.jpg" alt="Customer" class="hero-avatar">
+        <img src="customer2.jpg" alt="Customer" class="hero-avatar">
+        <img src="customer3.jpg" alt="Customer" class="hero-avatar">
+        <img src="customer4.jpg" alt="Customer" class="hero-avatar">
       </div>
       <div class="hero-trust-text">
         <div class="hero-stars" aria-label="5 star rating">★★★★★</div>
@@ -113,6 +114,37 @@
 
       <!-- Product image -->
       <img src="p1.png" alt="TMJ Foods Product" class="hero-pack">
+    </div>
+  </div>
+</section>
+
+<!-- =========================================
+     RECOGNITION / AWARDS & CERTIFICATIONS
+     ========================================= -->
+<section class="awards-section" aria-labelledby="awards-heading">
+  <div class="container">
+    <div class="awards-header reveal">
+      <p class="label">Recognition</p>
+      <h2 id="awards-heading">Awards &amp; <em>Certifications</em></h2>
+      <p>We are proud to be recognized for our commitment to quality, nutrition, and food safety. Click on any certification to view it in full size.</p>
+    </div>
+    <div class="awards-grid">
+      <div class="award-card reveal d1" onclick="openCertModal('certification1.jpeg')">
+        <img src="certification1.jpeg" alt="Certification 1" class="award-img" loading="lazy">
+        <div class="award-overlay"><span class="award-view">Click to view</span></div>
+      </div>
+      <div class="award-card reveal d2" onclick="openCertModal('certification2.jpeg')">
+        <img src="certification2.jpeg" alt="Certification 2" class="award-img" loading="lazy">
+        <div class="award-overlay"><span class="award-view">Click to view</span></div>
+      </div>
+      <div class="award-card reveal d3" onclick="openCertModal('certification3.jpeg')">
+        <img src="certification3.jpeg" alt="Certification 3" class="award-img" loading="lazy">
+        <div class="award-overlay"><span class="award-view">Click to view</span></div>
+      </div>
+      <div class="award-card reveal d4" onclick="openCertGallery('cert4')">
+        <img src="Certification%204/TMJ%20GLOBAL(FDA%20RENEWAL).pdf_20250303_124543_0000(1)_1.jpg" alt="FDA Renewal Certification" class="award-img" loading="lazy">
+        <div class="award-overlay"><span class="award-view">Click to view</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -681,5 +713,93 @@
   </div>
 </aside>
 <script src="js/shop.js"></script>
+
+<div class="cert-modal-overlay" id="certModal">
+  <div class="cert-modal-content">
+    <button class="cert-modal-close" aria-label="Close modal">✕</button>
+    <button class="cert-modal-nav cert-modal-prev" aria-label="Previous">‹</button>
+    <button class="cert-modal-nav cert-modal-next" aria-label="Next">›</button>
+    <img src="" alt="Certification" id="certModalImg" class="cert-modal-img">
+  </div>
+</div>
+
+<script>
+const certGalleries = {
+  cert4: [
+    'Certification 4/TMJ GLOBAL(FDA RENEWAL).pdf_20250303_124543_0000(1)_1.jpg',
+    'Certification 4/TMJ GLOBAL(FDA RENEWAL).pdf_20250303_124543_0000(1)_2.jpg',
+    'Certification 4/TMJ GLOBAL(FDA RENEWAL).pdf_20250303_124543_0000(1)_3.jpg',
+    'Certification 4/TMJ GLOBAL(FDA RENEWAL).pdf_20250303_124543_0000(1)_5.jpg',
+    'Certification 4/TMJ GLOBAL(FDA RENEWAL).pdf_20250303_124543_0000(1)_6.jpg',
+    'Certification 4/TMJ GLOBAL(FDA RENEWAL).pdf_20250303_124543_0000(1)_7.jpg',
+    'Certification 4/TMJ GLOBAL(FDA RENEWAL).pdf_20250303_124543_0000(1)_8.jpg',
+    'Certification 4/TMJ GLOBAL(FDA RENEWAL).pdf_20250303_124543_0000(1)_9.jpg',
+    'Certification 4/TMJ GLOBAL(FDA RENEWAL).pdf_20250303_124543_0000(1)_10.jpg',
+    'Certification 4/TMJ GLOBAL(FDA RENEWAL).pdf_20250303_124543_0000(1)_11.jpg',
+    'Certification 4/TMJ GLOBAL(FDA RENEWAL).pdf_20250303_124543_0000(1)_12.jpg'
+  ]
+};
+let currentGallery = null;
+let currentIndex = 0;
+
+function openCertModal(imageSrc){
+  currentGallery = null;
+  const modal = document.getElementById('certModal');
+  document.getElementById('certModalImg').src = imageSrc;
+  modal.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function openCertGallery(galleryKey){
+  currentGallery = galleryKey;
+  currentIndex = 0;
+  const modal = document.getElementById('certModal');
+  document.getElementById('certModalImg').src = certGalleries[galleryKey][0];
+  modal.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function navCert(dir){
+  if(!currentGallery) return;
+  const gallery = certGalleries[currentGallery];
+  currentIndex = (currentIndex + dir + gallery.length) % gallery.length;
+  document.getElementById('certModalImg').src = gallery[currentIndex];
+}
+
+function closeCertModal(){
+  const modal = document.getElementById('certModal');
+  modal.classList.remove('open');
+  document.body.style.overflow='';
+  currentGallery = null;
+}
+
+// Event listeners
+document.getElementById('certModal').addEventListener('click', function(e){
+  if(e.target === this || e.target.id === 'certModalImg'){
+    closeCertModal();
+  }
+});
+
+document.querySelector('.cert-modal-close').addEventListener('click', function(e){
+  e.stopPropagation();
+  closeCertModal();
+});
+
+document.querySelector('.cert-modal-prev').addEventListener('click', function(e){
+  e.stopPropagation();
+  navCert(-1);
+});
+
+document.querySelector('.cert-modal-next').addEventListener('click', function(e){
+  e.stopPropagation();
+  navCert(1);
+});
+
+document.addEventListener('keydown', function(e){
+  if(e.key==='Escape') closeCertModal();
+  if(e.key==='ArrowLeft') navCert(-1);
+  if(e.key==='ArrowRight') navCert(1);
+});
+</script>
 </body>
 </html>

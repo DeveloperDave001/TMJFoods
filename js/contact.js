@@ -166,5 +166,22 @@ function displayFileName(name){
 }
 
 document.addEventListener('keydown',e=>{
-  if(e.key==='Escape') document.getElementById('mobileNav').classList.remove('open');
+  if(e.key==='Escape'){
+    document.getElementById('mobileNav').classList.remove('open');
+    closeCertModal();
+  }
 });
+
+function openCertModal(imageSrc){
+  const modal = document.getElementById('certModal');
+  document.getElementById('certModalImg').src = imageSrc;
+  modal.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeCertModal(event){
+  if(event && event.target !== document.getElementById('certModal') && !event.target.closest('.cert-modal-close')) return;
+  const modal = document.getElementById('certModal');
+  modal.classList.remove('open');
+  document.body.style.overflow='';
+}

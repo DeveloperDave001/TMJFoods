@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Track Your Orders — TMJ Foods</title>
+  <link rel="icon" type="image/png" href="lOGO%20-%20Favicon.png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/homepage.css"/>
+  <link rel="stylesheet" href="css/track-order.css"/>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="TMJ Foods Home">
+        <img src="LOGO.PNG" alt="TMJ Foods" class="nav-logo-img"/>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="tmj-foods-shop.html">Shop</a>
+        <a href="tmj-foods-about.html">About Us</a>
+        <a href="tmj-foods-contact.html">Contact Us</a>
+      </div>
+      <div class="nav-actions">
+        <a href="tmj-foods-shop.html" class="nav-cart" aria-label="Open cart">
+          🛒
+          <span class="nav-cart-badge" id="cartBadge">0</span>
+        </a>
+        <button class="hamburger" onclick="toggleMobileNav()" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="tmj-foods-shop.html">Shop</a>
+    <a href="tmj-foods-about.html">About Us</a>
+    <a href="tmj-foods-contact.html">Contact Us</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="track-hero">
+    <h1>Track Your Orders</h1>
+    <p>Enter your email to view your order history and status</p>
+  </section>
+
+  <!-- Main Content -->
+  <main class="track-main">
+    <div class="track-card">
+      <div class="track-form">
+        <h2>Find Your Orders</h2>
+        <div class="track-input-group">
+          <input type="email" id="emailInput" placeholder="Enter your email address" onkeypress="if(event.key==='Enter') lookupOrders()"/>
+          <button class="track-btn" onclick="lookupOrders()">View Orders</button>
+        </div>
+      </div>
+
+      <div class="orders-section" id="ordersSection" style="display:none;">
+        <h2>Your Orders</h2>
+        <div id="ordersList"></div>
+      </div>
+
+      <div class="empty-state" id="emptyState" style="display:none;">
+        <p>📭 No orders found for this email</p>
+        <p style="font-size:13px;">Make sure you entered the correct email address used during checkout</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="LOGO.PNG" alt="TMJ Foods" class="footer-logo"/>
+        <p class="footer-tagline">Functional food, built for you.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="tmj-foods-shop.html">Shop</a>
+        <a href="tmj-foods-about.html">About Us</a>
+        <a href="tmj-foods-contact.html">Contact</a>
+        <a href="tmj-foods-track-order.html">Track Order</a>
+      </div>
+      <div class="footer-links">
+        <h4>Products</h4>
+        <a href="tmj-foods-shop.html">Flour Blends</a>
+        <a href="tmj-foods-shop.html">Snacks</a>
+        <a href="tmj-foods-shop.html">Cereals</a>
+        <a href="tmj-foods-shop.html">Supplements</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p>📞 +234 800 TMJ FOODS</p>
+        <p>📧 hello@tmjfoods.com.ng</p>
+        <p>📍 Lagos, Nigeria</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 TMJ Foods. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/track-order.js"></script>
+  <script src="js/shop.js"></script>
+</body>
+</html>

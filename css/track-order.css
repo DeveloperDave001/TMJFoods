@@ -1,0 +1,260 @@
+.track-hero {
+  background: linear-gradient(135deg, #1A5C34 0%, #2D7A4F 100%);
+  color: #fff;
+  padding: 80px 24px 60px;
+  text-align: center;
+}
+.track-hero h1 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.track-hero p {
+  font-size: 16px;
+  opacity: 0.9;
+}
+.track-main {
+  max-width: 800px;
+  margin: -40px auto 60px;
+  padding: 0 24px;
+}
+.track-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  padding: 32px;
+}
+.track-form {
+  margin-bottom: 32px;
+}
+.track-form h2 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 20px;
+  margin-bottom: 16px;
+  color: #1F2937;
+}
+.track-input-group {
+  display: flex;
+  gap: 12px;
+}
+.track-input-group input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 2px solid #E5E7EB;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: 'DM Sans', sans-serif;
+}
+.track-input-group input:focus {
+  outline: none;
+  border-color: #1A5C34;
+}
+.track-btn {
+  background: #1A5C34;
+  color: #fff;
+  border: 0;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  white-space: nowrap;
+}
+.track-btn:hover {
+  background: #0F3D22;
+}
+.orders-section h2 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 20px;
+  margin-bottom: 16px;
+  color: #1F2937;
+}
+.order-card {
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.order-card:hover {
+  border-color: #1A5C34;
+  box-shadow: 0 2px 8px rgba(26,92,52,0.1);
+}
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.order-id {
+  font-weight: 600;
+  color: #1A5C34;
+  font-size: 15px;
+}
+.order-date {
+  font-size: 13px;
+  color: #6B7280;
+}
+.order-status {
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.status-pending { background: #FEF3C7; color: #92400E; }
+.status-paid { background: #DBEAFE; color: #1E40AF; }
+.status-processing { background: #E0E7FF; color: #3730A3; }
+.status-shipped { background: #D1FAE5; color: #065F46; }
+.status-delivered { background: #1A5C34; color: #fff; }
+.order-items {
+  font-size: 13px;
+  color: #6B7280;
+  margin-bottom: 8px;
+}
+.order-total {
+  font-weight: 600;
+  font-size: 16px;
+  color: #1F2937;
+}
+.order-details {
+  display: none;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #E5E7EB;
+}
+.order-details.show {
+  display: block;
+}
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 14px;
+}
+.detail-row span:first-child {
+  color: #6B7280;
+}
+.detail-row span:last-child {
+  font-weight: 500;
+}
+.item-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 13px;
+}
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: #6B7280;
+}
+.empty-state p {
+  margin-bottom: 8px;
+}
+@media (max-width: 640px) {
+  .track-input-group {
+    flex-direction: column;
+  }
+  .track-hero h1 {
+    font-size: 28px;
+  }
+}
+
+/* Logo sizing for track order page */
+.nav-logo-img {
+  height: 40px;
+  width: auto;
+}
+.footer-logo {
+  height: 40px;
+  width: auto;
+  margin-bottom: 12px;
+}
+
+/* Footer structure for track order page */
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 56px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.footer-brand {
+  color: rgba(255,255,255,0.7);
+}
+.footer-brand p {
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+.footer-links {
+  display: flex;
+  flex-direction: column;
+}
+.footer-links h4 {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 16px;
+}
+.footer-links a {
+  font-size: 14px;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 10px;
+  transition: color 0.2s;
+}
+.footer-links a:hover {
+  color: #fff;
+}
+.footer-contact {
+  color: rgba(255,255,255,0.7);
+}
+.footer-contact h4 {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 16px;
+}
+.footer-contact p {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.35);
+  gap: 16px;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.footer-tagline {
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  color: rgba(255,255,255,0.7);
+}
+@media (max-width: 900px) {
+  .footer-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+}
+@media (max-width: 640px) {
+  .footer-inner {
+    grid-template-columns: 1fr;
+  }
+}

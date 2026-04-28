@@ -155,7 +155,7 @@
       <div class="reveal">
         <p class="origin-label">How It All Began</p>
         <h2 class="origin-h2" id="origin-heading">
-          A Problem We<br>Lived <em>Every Day</em>
+          A Big Solution
         </h2>
         <p class="origin-body">
           TMJ Foods was born from a deeply personal observation. <strong>Africa's indigenous grains have fed our people for thousands of years.</strong> Sorghum, plantain, tiger nut, fonio, baobab — these are not exotic superfoods. They are our heritage. They have always been there, growing in our fields, cooked in our kitchens, passed down through generations.
@@ -491,53 +491,6 @@
   </div>
 </section>
 
-<section class="awards" aria-labelledby="awards-heading">
-  <div class="container">
-    <div class="awards-header reveal">
-      <p class="label">Recognition</p>
-      <h2 id="awards-heading">Awards &amp; <em>Certifications</em></h2>
-    </div>
-    <div class="awards-grid">
-      <div class="award-card reveal d1">
-        <div class="award-icon">🏆</div>
-        <h4>Best Agri-Food Startup</h4>
-        <p>Lagos State Entrepreneurship Awards — recognising innovation in agricultural value chains</p>
-        <span class="award-year">2024</span>
-      </div>
-      <div class="award-card reveal d2">
-        <div class="award-icon">🌿</div>
-        <h4>NAFDAC Registered</h4>
-        <p>All TMJ Foods products are registered with Nigeria's National Agency for Food and Drug Administration</p>
-        <span class="award-year">Active</span>
-      </div>
-      <div class="award-card reveal d3">
-        <div class="award-icon">🔬</div>
-        <h4>Lab Certified</h4>
-        <p>Third-party laboratory certification for nutritional claims, microbial safety, and gluten-free status</p>
-        <span class="award-year">Every Batch</span>
-      </div>
-      <div class="award-card reveal d1">
-        <div class="award-icon">🌍</div>
-        <h4>ECOWAS Export Certified</h4>
-        <p>Certified for export across ECOWAS member states — building the foundation for continental distribution</p>
-        <span class="award-year">2024</span>
-      </div>
-      <div class="award-card reveal d2">
-        <div class="award-icon">💚</div>
-        <h4>Sustainability Pledge</h4>
-        <p>Signatory to the Nigeria Sustainable Food Systems pledge — committed to zero-waste processing by 2026</p>
-        <span class="award-year">Ongoing</span>
-      </div>
-      <div class="award-card reveal d3">
-        <div class="award-icon">🤝</div>
-        <h4>BoI SME Financed</h4>
-        <p>Supported by Bank of Industry's SME intervention fund for agro-processing businesses</p>
-        <span class="award-year">2023</span>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="sustain" aria-labelledby="sustain-heading">
   <div class="container">
     <div class="sustain-inner">
@@ -712,5 +665,31 @@
   </div>
 </aside>
 <script src="js/shop.js"></script>
+
+<div class="cert-modal-overlay" id="certModal" onclick="closeCertModal(event)">
+  <div class="cert-modal-content">
+    <button class="cert-modal-close" onclick="closeCertModal()" aria-label="Close modal">✕</button>
+    <img src="" alt="Certification" id="certModalImg" class="cert-modal-img">
+  </div>
+</div>
+
+<script>
+function openCertModal(imageSrc){
+  const modal = document.getElementById('certModal');
+  document.getElementById('certModalImg').src = imageSrc;
+  modal.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeCertModal(event){
+  if(event && event.target !== document.getElementById('certModal') && !event.target.closest('.cert-modal-close')) return;
+  const modal = document.getElementById('certModal');
+  modal.classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape') closeCertModal();
+});
+</script>
 </body>
 </html>
